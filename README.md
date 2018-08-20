@@ -24,58 +24,58 @@ The purpose of this example is to provide details as to how one would go about u
 
 1.  clone this repository
 
-    ```
-    $ git clone git@github.com:conradwt/zero-to-graphql-using-phoenix.git
+    ```bash
+    git clone git@github.com:conradwt/zero-to-graphql-using-phoenix.git
     ```
 
 2.  change directory location
 
-    ```
-    $ cd /path/to/zero-to-graphql-using-phoenix
+    ```bash
+    cd /path/to/zero-to-graphql-using-phoenix
     ```
 
 3.  install dependencies
 
-    ```
-    $ mix deps.get
+    ```bash
+    mix deps.get
     ```
 
 4.  create, migrate, and seed the database
 
-    ```
-    $ mix ecto.create
-    $ mix ecto.migrate
-    $ mix ecto.seed
+    ```bash
+    mix ecto.create
+    mix ecto.migrate
+    mix ecto.seed
     ```
 
 5.  start the server
 
-    ```
-    $ mix phx.server
+    ```bash
+    mix phx.server
     ```
 
 6.  navigate to our application within the browser
 
-    ```
-    $ open http://localhost:4000/graphiql
+    ```bash
+    open http://localhost:4000/graphiql
     ```
 
 7.  enter and run GraphQL query
 
-    ```
+    ```graphql
     {
-     person(id: "1") {
-       firstName
-       lastName
-       username
-       email
-       friends {
-         firstName
-         lastName
-         username
-         email
-       }
-     }
+      person(id: "1") {
+        firstName
+        lastName
+        username
+        email
+        friends {
+          firstName
+          lastName
+          username
+          email
+        }
+      }
     }
     ```
 
@@ -86,35 +86,35 @@ The purpose of this example is to provide details as to how one would go about u
 
 1.  create the project
 
-    ```
-    $ mix phx.new zero_phoenix --no-brunch
+    ```bash
+    mix phx.new zero_phoenix --no-brunch
     ```
 
     Note: Just answer 'Y' to all the prompts that appear.
 
 2.  rename the project directory
 
-    ```
-    $ mv zero_phoenix zero-to-graphql-using-phoenix
+    ```bash
+    mv zero_phoenix zero-to-graphql-using-phoenix
     ```
 
 3.  switch to the project directory
 
-    ```
-    $ cd zero-to-graphql-using-phoenix
+    ```bash
+    cd zero-to-graphql-using-phoenix
     ```
 
 4.  update `username` and `password` database credentials which appears at the bottom of the following files:
 
-    ```
+    ```text
     config/dev.exs
     config/test.exs
     ```
 
 5.  generate an API for representing our `Person` resource
 
-    ```
-    $ mix phx.gen.json Person people first_name:string last_name:string username:string email:string
+    ```bash
+    mix phx.gen.json Person people first_name:string last_name:string username:string email:string
     ```
 
 6.  replace the generated `Person` model with the following:
@@ -167,15 +167,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 8.  create and migrate the database
 
-    ```
-    $ mix ecto.create
-    $ mix ecto.migrate
+    ```bash
+    mix ecto.create
+    mix ecto.migrate
     ```
 
 9.  generate a `Friendship` model which representing our join model:
 
-    ```
-    $ mix phx.gen.model Friendship friendships person_id:references:people friend_id:references:people
+    ```bash
+    mix phx.gen.model Friendship friendships person_id:references:people friend_id:references:people
     ```
 
 10. replace the generated `Friendship` model with the following:
@@ -211,16 +211,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 11. migrate the database
 
-    ```
-    $ mix ecto.migrate
+    ```bash
+    mix ecto.migrate
     ```
 
 12. create the seeds file
 
     `priv/repo/seeds.exs`:
 
-
-    ```
+    ```elixir
     alias ZeroPhoenix.Repo
     alias ZeroPhoenix.Person
     alias ZeroPhoenix.Friendship
@@ -277,8 +276,8 @@ The purpose of this example is to provide details as to how one would go about u
 
 13. seed the database
 
-    ```
-    $ mix run priv/repo/seeds.exs
+    ```bash
+    mix run priv/repo/seeds.exs
     ```
 
 14. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
@@ -311,8 +310,8 @@ The purpose of this example is to provide details as to how one would go about u
 
 16. update our projects dependencies:
 
-    ```
-    $ mix deps.get
+    ```bash
+    mix deps.get
     ```
 
 17. add the GraphQL schema which represents our entry point into our GraphQL structure:
@@ -382,7 +381,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 19. add route for mounting the GraphiQL browser endpoint:
 
-    ```
+    ```elixir
     scope "/graphiql" do
       pipe_through :api
 
@@ -392,19 +391,19 @@ The purpose of this example is to provide details as to how one would go about u
 
 20. start the server
 
-    ```
-    $ mix phx.server
+    ```bash
+    mix phx.server
     ```
 
 21. navigate to our application within the browser
 
-    ```
-    $ open http://localhost:4000/graphiql
+    ```bash
+    open http://localhost:4000/graphiql
     ```
 
 22. enter and run GraphQL query
 
-    ```
+    ```graphql
     {
       person(id: "1") {
         firstName
