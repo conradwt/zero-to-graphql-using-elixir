@@ -64,7 +64,7 @@ The purpose of this example is to provide details as to how one would go about u
 
     ```graphql
     {
-      person(id: "1") {
+      person(id: 1) {
         firstName
         lastName
         username
