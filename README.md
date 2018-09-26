@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.7.1 or higher](http://elixir-lang.org/install.html)
+- [Elixir 1.7.3 or higher](http://elixir-lang.org/install.html)
 
 - [Phoenix 1.4.0-dev or higher](http://www.phoenixframework.org/docs/installation)
 
@@ -111,13 +111,19 @@ The purpose of this example is to provide details as to how one would go about u
     config/test.exs
     ```
 
-5.  generate an API for representing our `Person` resource
+5.  create the database
+
+    ```bash
+    mix ecto.create
+    ```
+
+6.  generate an API for representing our `Person` resource
 
     ```bash
     mix phx.gen.json Person people first_name:string last_name:string username:string email:string
     ```
 
-6.  replace the generated `Person` model with the following:
+7.  replace the generated `Person` model with the following:
 
     `web/models/person.ex`:
 
@@ -151,7 +157,13 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-7.  add the resource to your api scope in which should look as follows after the edit:
+8.  migrate the database
+
+    ```bash
+    mix ecto.migrate
+    ```
+
+9.  add the resource to your api scope in which should look as follows after the edit:
 
     `web/router.ex`:
 
@@ -165,20 +177,13 @@ The purpose of this example is to provide details as to how one would go about u
 
     Note: When creating an API, one doesn't require a new or edit actions. Thus, this is the reason that we are excluding them from this resource.
 
-8.  create and migrate the database
-
-    ```bash
-    mix ecto.create
-    mix ecto.migrate
-    ```
-
-9.  generate a `Friendship` model which representing our join model:
+10. generate a `Friendship` model which representing our join model:
 
     ```bash
     mix phx.gen.model Friendship friendships person_id:references:people friend_id:references:people
     ```
 
-10. replace the generated `Friendship` model with the following:
+11. replace the generated `Friendship` model with the following:
 
     `web/models/friendship.ex`:
 
@@ -209,13 +214,13 @@ The purpose of this example is to provide details as to how one would go about u
 
     Note: We want `friend_id` to reference the `people` table because our `friend_id` really represents a `Person` model.
 
-11. migrate the database
+12. migrate the database
 
     ```bash
     mix ecto.migrate
     ```
 
-12. create the seeds file
+13. create the seeds file
 
     `priv/repo/seeds.exs`:
 
@@ -274,13 +279,13 @@ The purpose of this example is to provide details as to how one would go about u
     |> Repo.insert
     ```
 
-13. seed the database
+14. seed the database
 
     ```bash
     mix run priv/repo/seeds.exs
     ```
 
-14. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
+15. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
 
     ```elixir
     defp deps do
@@ -296,15 +301,6 @@ The purpose of this example is to provide details as to how one would go about u
         {:absinthe_plug, "~> 1.4"},
         {:poison, "~> 3.1"}
       ]
-    end
-    ```
-
-15. Add `absinthe_plug` application to your `mix.exs` application as follows:
-
-    ```elixir
-    def application do
-      [mod: {ZeroPhoenix, []},
-       applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex, :absinthe_plug]]
     end
     ```
 
@@ -401,11 +397,11 @@ The purpose of this example is to provide details as to how one would go about u
     open http://localhost:4000/graphiql
     ```
 
-22. enter and run GraphQL query
+22. enter the GraphQL query on the left side of the browser
 
     ```graphql
     {
-      person(id: "1") {
+      person(id: 1) {
         firstName
         lastName
         username
@@ -418,6 +414,12 @@ The purpose of this example is to provide details as to how one would go about u
         }
       }
     }
+    ```
+
+23. run the GraphQL query
+
+    ```text
+    Control + Enter
     ```
 
     Note: The GraphQL query is responding with same response but different shape
