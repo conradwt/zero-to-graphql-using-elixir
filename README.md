@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - [Elixir 1.7.4 or higher](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.4.0-dev or higher](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.4.0 or higher](http://www.phoenixframework.org/docs/installation)
 
 - PostgreSQL 10.4.0 or higher
 
