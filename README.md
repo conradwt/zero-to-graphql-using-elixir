@@ -376,6 +376,8 @@ The purpose of this example is to provide details as to how one would go about u
 
 19. add route for mounting the GraphiQL browser endpoint:
 
+    `lib/zero_phoenix_web/router.ex`:
+
     ```elixir
     scope "/graphiql" do
       pipe_through :api
