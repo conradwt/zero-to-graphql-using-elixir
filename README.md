@@ -125,7 +125,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 7.  replace the generated `Person` model with the following:
 
-    `zero_phoenix/account/person.ex`:
+    `lib/zero_phoenix/account/person.ex`:
 
     ```elixir
     defmodule ZeroPhoenix.Account.Person do
@@ -163,7 +163,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 9.  add the resource to your api scope in which should look as follows after the edit:
 
-    `web/router.ex`:
+    `lib/zero_phoenix_web/router.ex`:
 
     ```elixir
     scope "/api", ZeroPhoenixWeb do
@@ -183,7 +183,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 11. replace the generated `Friendship` model with the following:
 
-    `zero_phoenix/account/friendship.ex`:
+    `lib/zero_phoenix/account/friendship.ex`:
 
     ```elixir
     defmodule ZeroPhoenix.Account.Friendship do
@@ -311,10 +311,10 @@ The purpose of this example is to provide details as to how one would go about u
 
 17. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
-    `web/graphql/schema.ex`:
+    `lib/zero_phoenix_web/graphql/schema.ex`:
 
     ```elixir
-    defmodule ZeroPhoenix.Graphql.Schema do
+    defmodule ZeroPhoenixWeb.Graphql.Schema do
       use Absinthe.Schema
 
       import_types ZeroPhoenix.Graphql.Types.Person
@@ -337,10 +337,10 @@ The purpose of this example is to provide details as to how one would go about u
 
 18. add our Person type which will be performing queries against:
 
-    `web/graphql/types/person.ex`:
+    `lib/zero_phoenix_web/graphql/types/person.ex`:
 
     ```elixir
-    defmodule ZeroPhoenix.Graphql.Types.Person do
+    defmodule ZeroPhoenixWeb.Graphql.Types.Person do
       use Absinthe.Schema.Notation
 
       import Ecto
