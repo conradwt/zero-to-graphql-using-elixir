@@ -11,8 +11,8 @@
 # and so on) as they will fail if something goes wrong.
 
 alias ZeroPhoenix.Repo
-alias ZeroPhoenix.Accounts.Person
-alias ZeroPhoenix.Accounts.Friendship
+alias ZeroPhoenix.Account.Person
+alias ZeroPhoenix.Account.Friendship
 
 # reset the datastore
 Repo.delete_all(Friendship)
