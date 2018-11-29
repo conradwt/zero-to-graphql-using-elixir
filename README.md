@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.7.3 or higher](http://elixir-lang.org/install.html)
+- [Elixir 1.7.4 or higher](http://elixir-lang.org/install.html)
 
 - [Phoenix 1.4.0-dev or higher](http://www.phoenixframework.org/docs/installation)
 
@@ -120,39 +120,37 @@ The purpose of this example is to provide details as to how one would go about u
 6.  generate an API for representing our `Person` resource
 
     ```bash
-    mix phx.gen.json Person people first_name:string last_name:string username:string email:string
+    mix phx.gen.json Account Person people first_name:string last_name:string username:string email:string
     ```
 
 7.  replace the generated `Person` model with the following:
 
-    `web/models/person.ex`:
+    `zero_phoenix/account/person.ex`:
 
     ```elixir
-    defmodule ZeroPhoenix.Person do
-      use ZeroPhoenix.Web, :model
-
-      @required_fields ~w(first_name last_name username email)
-      @optional_fields ~w()
+    defmodule ZeroPhoenix.Account.Person do
+      use Ecto.Schema
+      import Ecto.Changeset
+      alias ZeroPhoenix.Account.Person
+      alias ZeroPhoenix.Account.Friendship
 
       schema "people" do
-        field :first_name, :string
-        field :last_name, :string
-        field :username, :string
-        field :email, :string
+        field(:email, :string)
+        field(:first_name, :string)
+        field(:last_name, :string)
+        field(:username, :string)
 
-        has_many :friendships, ZeroPhoenix.Friendship
-        has_many :friends, through: [:friendships, :friend]
+        has_many(:friendships, Friendship)
+        has_many(:friends, through: [:friendships, :friend])
 
         timestamps()
       end
 
-      @doc """
-      Builds a changeset based on the `struct` and `params`.
-      """
-      def changeset(struct, params \\ %{}) do
-        struct
-        |> cast(params, @required_fields)
-        |> validate_required(@required_fields)
+      @doc false
+      def changeset(%Person{} = person, attrs) do
+        person
+        |> cast(attrs, [:first_name, :last_name, :username, :email])
+        |> validate_required([:first_name, :last_name, :username, :email])
       end
     end
     ```
@@ -168,7 +166,7 @@ The purpose of this example is to provide details as to how one would go about u
     `web/router.ex`:
 
     ```elixir
-    scope "/api", ZeroPhoenix do
+    scope "/api", ZeroPhoenixWeb do
       pipe_through :api
 
       resources "/people", PersonController, except: [:new, :edit]
@@ -180,33 +178,33 @@ The purpose of this example is to provide details as to how one would go about u
 10. generate a `Friendship` model which representing our join model:
 
     ```bash
-    mix phx.gen.model Friendship friendships person_id:references:people friend_id:references:people
+    mix phx.gen.model Account Friendship friendships person_id:references:people friend_id:references:people
     ```
 
 11. replace the generated `Friendship` model with the following:
 
-    `web/models/friendship.ex`:
+    `zero_phoenix/account/friendship.ex`:
 
     ```elixir
-    defmodule ZeroPhoenix.Friendship do
-      use ZeroPhoenix.Web, :model
+    defmodule ZeroPhoenix.Account.Friendship do
+      use Ecto.Schema
+      import Ecto.Changeset
+      alias ZeroPhoenix.Account.Person
+      alias ZeroPhoenix.Account.Friendship
 
-      @required_fields ~w(person_id friend_id)
-      @optional_fields ~w()
+      @required_fields [:person_id, :friend_id]
 
       schema "friendships" do
-        belongs_to :person, ZeroPhoenix.Person
-        belongs_to :friend, ZeroPhoenix.Person
+        belongs_to(:person, Person)
+        belongs_to(:friend, Person)
 
         timestamps()
       end
 
-      @doc """
-      Builds a changeset based on the `struct` and `params`.
-      """
-      def changeset(struct, params \\ %{}) do
-        struct
-        |> cast(params, @required_fields)
+      @doc false
+      def changeset(%Friendship{} = friendship, attrs) do
+        friendship
+        |> cast(attrs, @required_fields)
         |> validate_required(@required_fields)
       end
     end
@@ -226,8 +224,8 @@ The purpose of this example is to provide details as to how one would go about u
 
     ```elixir
     alias ZeroPhoenix.Repo
-    alias ZeroPhoenix.Person
-    alias ZeroPhoenix.Friendship
+    alias ZeroPhoenix.Account.Person
+    alias ZeroPhoenix.Account.Friendship
 
     # reset the datastore
     Repo.delete_all(Person)
@@ -290,16 +288,17 @@ The purpose of this example is to provide details as to how one would go about u
     ```elixir
     defp deps do
       [
-        {:phoenix, github: "phoenixframework/phoenix", override: true},
-        {:phoenix_pubsub, "~> 1.0"},
-        {:phoenix_ecto, "~> 3.3.0"},
-        {:postgrex, "~> 0.13.5"},
+        {:phoenix, "~> 1.4.0"},
+        {:phoenix_pubsub, "~> 1.1"},
+        {:phoenix_ecto, "~> 4.0"},
+        {:ecto_sql, "~> 3.0"},
+        {:postgrex, "~> 0.14.1"},
         {:phoenix_html, "~> 2.11"},
-        {:phoenix_live_reload, "~> 1.1", only: :dev},
-        {:gettext, "~> 0.15.0"},
-        {:cowboy, "~> 2.4"},
-        {:absinthe_plug, "~> 1.4"},
-        {:poison, "~> 3.1"}
+        {:phoenix_live_reload, "~> 1.2", only: :dev},
+        {:gettext, "~> 0.16.1"},
+        {:jason, "~> 1.1"},
+        {:plug_cowboy, "~> 2.0"},
+        {:absinthe_plug, "~> 1.4"}
       ]
     end
     ```
@@ -381,7 +380,11 @@ The purpose of this example is to provide details as to how one would go about u
     scope "/graphiql" do
       pipe_through :api
 
-      forward "/", Absinthe.Plug.GraphiQL, schema: ZeroPhoenix.Graphql.Schema, interface: :simple
+      forward "/",
+              Absinthe.Plug.GraphiQL,
+              schema: ZeroPhoenixWeb.Graphql.Schema,
+              json_codec: Jason,
+              interface: :simple
     end
     ```
 
