@@ -43,7 +43,8 @@ defmodule ZeroPhoenix.Mixfile do
       {:gettext, "~> 0.16.1"},
       {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"},
-      {:absinthe_plug, "~> 1.4"}
+      {:absinthe_plug, "~> 1.4"},
+      {:distillery, "~> 2.0"}
     ]
   end
 
