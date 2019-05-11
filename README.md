@@ -6,11 +6,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.7.4 or higher](http://elixir-lang.org/install.html)
+- [Elixir 1.8.1 or higher](http://elixir-lang.org/install.html)
 
 - [Phoenix 1.4.0 or higher](http://www.phoenixframework.org/docs/installation)
 
-- PostgreSQL 10.4.0 or higher
+- PostgreSQL 11.2.0 or higher
 
 ## Communication
 
