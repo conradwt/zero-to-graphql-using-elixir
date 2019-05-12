@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - [Elixir 1.8.1 or higher](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.4.0 or higher](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.4.5 or higher](http://www.phoenixframework.org/docs/installation)
 
 - PostgreSQL 11.2.0 or higher
 
@@ -288,7 +288,7 @@ The purpose of this example is to provide details as to how one would go about u
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.4.0"},
+        {:phoenix, "~> 1.4.5"},
         {:phoenix_pubsub, "~> 1.1"},
         {:phoenix_ecto, "~> 4.0"},
         {:ecto_sql, "~> 3.0"},
@@ -459,4 +459,4 @@ Zero to GraphQL Using Phoenix is released under the [MIT license](https://mit-li
 
 ## Copyright
 
-copyright:: (c) Copyright 2018 Conrad Taylor. All Rights Reserved.
+copyright:: (c) Copyright 2018 - 2019 Conrad Taylor. All Rights Reserved.
