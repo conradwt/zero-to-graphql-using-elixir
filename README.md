@@ -87,7 +87,7 @@ The purpose of this example is to provide details as to how one would go about u
 1.  create the project
 
     ```bash
-    mix phx.new zero_phoenix --no-brunch
+    mix phx.new zero_phoenix --no-webpack
     ```
 
     Note: Just answer 'Y' to all the prompts that appear.
@@ -161,27 +161,13 @@ The purpose of this example is to provide details as to how one would go about u
     mix ecto.migrate
     ```
 
-9.  add the resource to your api scope in which should look as follows after the edit:
-
-    `lib/zero_phoenix_web/router.ex`:
-
-    ```elixir
-    scope "/api", ZeroPhoenixWeb do
-      pipe_through :api
-
-      resources "/people", PersonController, except: [:new, :edit]
-    end
-    ```
-
-    Note: When creating an API, one doesn't require a new or edit actions. Thus, this is the reason that we are excluding them from this resource.
-
-10. generate a `Friendship` model which representing our join model:
+9.  generate a `Friendship` model which representing our join model:
 
     ```bash
     mix phx.gen.model Account Friendship friendships person_id:references:people friend_id:references:people
     ```
 
-11. replace the generated `Friendship` model with the following:
+10. replace the generated `Friendship` model with the following:
 
     `lib/zero_phoenix/account/friendship.ex`:
 
@@ -212,13 +198,13 @@ The purpose of this example is to provide details as to how one would go about u
 
     Note: We want `friend_id` to reference the `people` table because our `friend_id` really represents a `Person` model.
 
-12. migrate the database
+11. migrate the database
 
     ```bash
     mix ecto.migrate
     ```
 
-13. create the seeds file
+12. create the seeds file
 
     `priv/repo/seeds.exs`:
 
@@ -277,13 +263,13 @@ The purpose of this example is to provide details as to how one would go about u
     |> Repo.insert
     ```
 
-14. seed the database
+13. seed the database
 
     ```bash
     mix run priv/repo/seeds.exs
     ```
 
-15. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
+14. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
 
     ```elixir
     defp deps do
@@ -303,13 +289,13 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-16. update our projects dependencies:
+15. update our projects dependencies:
 
     ```bash
     mix deps.get
     ```
 
-17. add the GraphQL schema which represents our entry point into our GraphQL structure:
+16. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
@@ -335,7 +321,7 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-18. add our Person type which will be performing queries against:
+17. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -374,7 +360,7 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-19. add route for mounting the GraphiQL browser endpoint:
+18. add route for mounting the GraphiQL browser endpoint:
 
     `lib/zero_phoenix_web/router.ex`:
 
@@ -390,19 +376,19 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-20. start the server
+19. start the server
 
     ```bash
     mix phx.server
     ```
 
-21. navigate to our application within the browser
+20. navigate to our application within the browser
 
     ```bash
     open http://localhost:4000/graphiql
     ```
 
-22. enter the GraphQL query on the left side of the browser
+21. enter the GraphQL query on the left side of the browser
 
     ```graphql
     {
@@ -421,7 +407,7 @@ The purpose of this example is to provide details as to how one would go about u
     }
     ```
 
-23. run the GraphQL query
+22. run the GraphQL query
 
     ```text
     Control + Enter
