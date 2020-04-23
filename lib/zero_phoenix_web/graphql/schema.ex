@@ -12,8 +12,8 @@ defmodule ZeroPhoenixWeb.Graphql.Schema do
 
       resolve(fn %{id: id}, _info ->
         case Person |> Repo.get(id) do
-          nil -> {:error, "Person id #{id} not found"}
           person -> {:ok, person}
+          nil -> {:error, "Person id #{id} not found"}
         end
       end)
     end

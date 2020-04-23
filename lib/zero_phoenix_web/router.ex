@@ -1,5 +1,6 @@
 defmodule ZeroPhoenixWeb.Router do
   use ZeroPhoenixWeb, :router
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -11,6 +12,13 @@ defmodule ZeroPhoenixWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  if Mix.env() == :dev do
+    scope "/" do
+      pipe_through :browser
+      live_dashboard "/dashboard"
+    end
   end
 
   scope "/", ZeroPhoenixWeb do
