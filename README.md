@@ -117,10 +117,10 @@ The purpose of this example is to provide details as to how one would go about u
     mix ecto.create
     ```
 
-6.  generate an API for representing our `Person` resource
+6.  generate contexts, schemas, and migrations for `Person` resource
 
     ```bash
-    mix phx.gen.json Account Person people first_name:string last_name:string username:string email:string
+    mix phx.gen.context Account Person people first_name:string last_name:string username:string email:string
     ```
 
 7.  replace the generated `Person` model with the following:
@@ -161,10 +161,10 @@ The purpose of this example is to provide details as to how one would go about u
     mix ecto.migrate
     ```
 
-9.  generate a `Friendship` model which representing our join model:
+9.  generate contexts, schemas, and migrations for `Friendship` resource
 
     ```bash
-    mix phx.gen.model Account Friendship friendships person_id:references:people friend_id:references:people
+    mix phx.gen.context Account Friendship friendships person_id:references:people friend_id:references:people
     ```
 
 10. replace the generated `Friendship` model with the following:
