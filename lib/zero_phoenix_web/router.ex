@@ -26,14 +26,14 @@ defmodule ZeroPhoenixWeb.Router do
     resources "/people", PersonController, except: [:new, :edit]
   end
 
-  scope "/graphiql" do
+  scope "/playground" do
     pipe_through :api
 
     forward "/",
             Absinthe.Plug.GraphiQL,
             schema: ZeroPhoenixWeb.Graphql.Schema,
             json_codec: Jason,
-            interface: :simple
+            interface: :playground
   end
 
   # Enables LiveDashboard only for development
