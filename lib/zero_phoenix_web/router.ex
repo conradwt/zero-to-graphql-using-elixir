@@ -26,7 +26,7 @@ defmodule ZeroPhoenixWeb.Router do
     resources "/people", PersonController, except: [:new, :edit]
   end
 
-  scope "/playground" do
+  scope "/graphql" do
     pipe_through :api
 
     forward "/",

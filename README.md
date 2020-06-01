@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - [Elixir 1.10.3 or higher](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.5.1 or higher](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.5.3 or higher](http://www.phoenixframework.org/docs/installation)
 
 - PostgreSQL 12.2.0 or higher
 
@@ -57,7 +57,7 @@ The purpose of this example is to provide details as to how one would go about u
 6.  navigate to our application within the browser
 
     ```bash
-    open http://localhost:4000/graphiql
+    open http://localhost:4000/graphql
     ```
 
 7.  enter and run GraphQL query
@@ -367,7 +367,7 @@ The purpose of this example is to provide details as to how one would go about u
     `lib/zero_phoenix_web/router.ex`:
 
     ```elixir
-    scope "/graphiql" do
+    scope "/graphql" do
       pipe_through :api
 
       forward "/",
@@ -387,7 +387,7 @@ The purpose of this example is to provide details as to how one would go about u
 20. navigate to our application within the browser
 
     ```bash
-    open http://localhost:4000/graphiql
+    open http://localhost:4000/graphql
     ```
 
 21. enter the GraphQL query on the left side of the browser
