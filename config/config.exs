@@ -14,7 +14,8 @@ config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "nvgjFfsHcYw2DWvEX4Rtzj4DONDO4t7+lt4alSLGPFhP58bvBoz7xVv36Co96Yl9",
   render_errors: [view: ZeroPhoenixWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ZeroPhoenix.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: ZeroPhoenix.PubSub,
+  live_view: [signing_salt: "T5j5zrlDZstVVRySNrF+pqPHtBAPuRR0"]
 
 # Configures Elixir's Logger
 config :logger, :console,

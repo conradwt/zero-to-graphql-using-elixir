@@ -6,11 +6,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.8.1 or higher](http://elixir-lang.org/install.html)
+- [Elixir 1.10.3 or higher](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.4.5 or higher](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.5.3 or higher](http://www.phoenixframework.org/docs/installation)
 
-- PostgreSQL 11.2.0 or higher
+- PostgreSQL 12.2.0 or higher
 
 ## Communication
 
@@ -57,7 +57,7 @@ The purpose of this example is to provide details as to how one would go about u
 6.  navigate to our application within the browser
 
     ```bash
-    open http://localhost:4000/graphiql
+    open http://localhost:4000/graphql
     ```
 
 7.  enter and run GraphQL query
@@ -87,7 +87,7 @@ The purpose of this example is to provide details as to how one would go about u
 1.  create the project
 
     ```bash
-    mix phx.new zero_phoenix --no-brunch
+    mix phx.new zero_phoenix --no-webpack
     ```
 
     Note: Just answer 'Y' to all the prompts that appear.
@@ -117,10 +117,10 @@ The purpose of this example is to provide details as to how one would go about u
     mix ecto.create
     ```
 
-6.  generate an API for representing our `Person` resource
+6.  generate contexts, schemas, and migrations for `Person` resource
 
     ```bash
-    mix phx.gen.json Account Person people first_name:string last_name:string username:string email:string
+    mix phx.gen.context Account Person people first_name:string last_name:string username:string email:string
     ```
 
 7.  replace the generated `Person` model with the following:
@@ -161,27 +161,13 @@ The purpose of this example is to provide details as to how one would go about u
     mix ecto.migrate
     ```
 
-9.  add the resource to your api scope in which should look as follows after the edit:
-
-    `lib/zero_phoenix_web/router.ex`:
-
-    ```elixir
-    scope "/api", ZeroPhoenixWeb do
-      pipe_through :api
-
-      resources "/people", PersonController, except: [:new, :edit]
-    end
-    ```
-
-    Note: When creating an API, one doesn't require a new or edit actions. Thus, this is the reason that we are excluding them from this resource.
-
-10. generate a `Friendship` model which representing our join model:
+9.  generate contexts, schemas, and migrations for `Friendship` resource
 
     ```bash
-    mix phx.gen.model Account Friendship friendships person_id:references:people friend_id:references:people
+    mix phx.gen.context Account Friendship friendships person_id:references:people friend_id:references:people
     ```
 
-11. replace the generated `Friendship` model with the following:
+10. replace the generated `Friendship` model with the following:
 
     `lib/zero_phoenix/account/friendship.ex`:
 
@@ -212,13 +198,13 @@ The purpose of this example is to provide details as to how one would go about u
 
     Note: We want `friend_id` to reference the `people` table because our `friend_id` really represents a `Person` model.
 
-12. migrate the database
+11. migrate the database
 
     ```bash
     mix ecto.migrate
     ```
 
-13. create the seeds file
+12. create the seeds file
 
     `priv/repo/seeds.exs`:
 
@@ -277,39 +263,41 @@ The purpose of this example is to provide details as to how one would go about u
     |> Repo.insert
     ```
 
-14. seed the database
+13. seed the database
 
     ```bash
     mix run priv/repo/seeds.exs
     ```
 
-15. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
+14. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
 
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.4.5"},
-        {:phoenix_pubsub, "~> 1.1"},
-        {:phoenix_ecto, "~> 4.0"},
-        {:ecto_sql, "~> 3.0"},
-        {:postgrex, "~> 0.14.1"},
-        {:phoenix_html, "~> 2.11"},
-        {:phoenix_live_reload, "~> 1.2", only: :dev},
-        {:gettext, "~> 0.16.1"},
-        {:jason, "~> 1.1"},
-        {:plug_cowboy, "~> 2.0"},
-        {:absinthe_plug, "~> 1.4"}
+        {:phoenix, "~> 1.5.3"},
+        {:phoenix_ecto, "~> 4.1.0"},
+        {:ecto_sql, "~> 3.4.3"},
+        {:postgrex, "~> 0.15.4"},
+        {:phoenix_html, "~> 2.14.2"},
+        {:phoenix_live_reload, "~> 1.2.2", only: :dev},
+        {:phoenix_live_dashboard, "~> 0.2.5"},
+        {:telemetry_metrics, "~> 0.5.0"},
+        {:telemetry_poller, "~> 0.5.0"},
+        {:gettext, "~> 0.18.0"},
+        {:jason, "~> 1.2.1"},
+        {:plug_cowboy, "~> 2.2.2"},
+        {:absinthe_plug, "~> 1.5.0"}
       ]
     end
     ```
 
-16. update our projects dependencies:
+15. update our projects dependencies:
 
     ```bash
     mix deps.get
     ```
 
-17. add the GraphQL schema which represents our entry point into our GraphQL structure:
+16. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
@@ -335,7 +323,7 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-18. add our Person type which will be performing queries against:
+17. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -374,12 +362,12 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-19. add route for mounting the GraphiQL browser endpoint:
+18. add route for mounting the GraphiQL browser endpoint:
 
     `lib/zero_phoenix_web/router.ex`:
 
     ```elixir
-    scope "/graphiql" do
+    scope "/graphql" do
       pipe_through :api
 
       forward "/",
@@ -390,19 +378,19 @@ The purpose of this example is to provide details as to how one would go about u
     end
     ```
 
-20. start the server
+19. start the server
 
     ```bash
     mix phx.server
     ```
 
-21. navigate to our application within the browser
+20. navigate to our application within the browser
 
     ```bash
-    open http://localhost:4000/graphiql
+    open http://localhost:4000/graphql
     ```
 
-22. enter the GraphQL query on the left side of the browser
+21. enter the GraphQL query on the left side of the browser
 
     ```graphql
     {
@@ -421,7 +409,7 @@ The purpose of this example is to provide details as to how one would go about u
     }
     ```
 
-23. run the GraphQL query
+22. run the GraphQL query
 
     ```text
     Control + Enter
@@ -455,8 +443,8 @@ Bug reports and feature requests can be filed with the rest for the Phoenix proj
 
 ## License
 
-Zero to GraphQL Using Phoenix is released under the [MIT license](https://mit-license.org).
+Zero to GraphQL Using Phoenix is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-copyright:: (c) Copyright 2018 - 2019 Conrad Taylor. All Rights Reserved.
+copyright:: (c) Copyright 2018 - 2020 Conrad Taylor. All Rights Reserved.
