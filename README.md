@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - [Phoenix 1.5.3 or higher](http://www.phoenixframework.org/docs/installation)
 
-- PostgreSQL 12.2.0 or higher
+- PostgreSQL 12.3.0 or higher
 
 ## Communication
 
