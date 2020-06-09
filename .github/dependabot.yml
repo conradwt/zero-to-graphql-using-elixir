@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+  - package-ecosystem: mix
+    allow:
+      dependency-type: all
+    directory: '/'
+    open-pull-requests-limit: 10
+    schedule:
+      interval: daily
+    security-updates-only: true
+    versioning-strategy: lockfile-only
+
+  - package-ecosystem: npm
+    allow:
+      dependency-type: all
+    directory: '/'
+    open-pull-requests-limit: 10
+    schedule:
+      interval: daily
+    security-updates-only: true
+    versioning-strategy: lockfile-only
