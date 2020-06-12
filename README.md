@@ -79,6 +79,12 @@ The purpose of this example is to provide details as to how one would go about u
     }
     ```
 
+8.  run the GraphQL query
+
+    ```text
+    Control + Enter
+    ```
+
     Note: The GraphQL query is responding with same response but different shape
     within the GraphiQL browser because Elixir Maps perform no ordering on insertion.
 
