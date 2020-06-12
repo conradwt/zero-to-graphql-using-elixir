@@ -57,7 +57,7 @@ The purpose of this example is to provide details as to how one would go about u
 6.  navigate to our application within the browser
 
     ```bash
-    open http://localhost:4000/graphql
+    open http://localhost:4000/graphiql
     ```
 
 7.  enter and run GraphQL query
@@ -367,7 +367,7 @@ The purpose of this example is to provide details as to how one would go about u
     `lib/zero_phoenix_web/router.ex`:
 
     ```elixir
-    scope "/graphql" do
+    scope "/graphiql" do
       pipe_through :api
 
       forward "/",
