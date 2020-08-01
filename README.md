@@ -6,9 +6,9 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.10.3 or higher](http://elixir-lang.org/install.html)
+- [Elixir 1.10.4 or higher](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.5.3 or higher](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.5.4 or higher](http://www.phoenixframework.org/docs/installation)
 
 - PostgreSQL 12.3.0 or higher
 
@@ -280,15 +280,15 @@ The purpose of this example is to provide details as to how one would go about u
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.5.3"},
+        {:phoenix, "~> 1.5.4"},
         {:phoenix_ecto, "~> 4.1.0"},
-        {:ecto_sql, "~> 3.4.4"},
+        {:ecto_sql, "~> 3.4.5"},
         {:postgrex, "~> 0.15.5"},
         {:phoenix_html, "~> 2.14.2"},
-        {:phoenix_live_reload, "~> 1.2.2", only: :dev},
-        {:phoenix_live_dashboard, "~> 0.2.6"},
+        {:phoenix_live_reload, "~> 1.2.4", only: :dev},
+        {:phoenix_live_dashboard, "~> 0.2.7"},
         {:telemetry_metrics, "~> 0.5.0"},
-        {:telemetry_poller, "~> 0.5.0"},
+        {:telemetry_poller, "~> 0.5.1"},
         {:gettext, "~> 0.18.0"},
         {:jason, "~> 1.2.1"},
         {:plug_cowboy, "~> 2.3.0"},
@@ -380,7 +380,7 @@ The purpose of this example is to provide details as to how one would go about u
               Absinthe.Plug.GraphiQL,
               schema: ZeroPhoenixWeb.Graphql.Schema,
               json_codec: Jason,
-              interface: :simple
+              interface: :playground
     end
     ```
 
@@ -393,7 +393,7 @@ The purpose of this example is to provide details as to how one would go about u
 20. navigate to our application within the browser
 
     ```bash
-    open http://localhost:4000/graphql
+    open http://localhost:4000/graphiql
     ```
 
 21. enter the GraphQL query on the left side of the browser
