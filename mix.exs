@@ -33,17 +33,17 @@ defmodule ZeroPhoenix.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.4"},
-      {:phoenix_ecto, "~> 4.1.0"},
+      {:phoenix, "~> 1.5.5"},
+      {:phoenix_ecto, "~> 4.2.0"},
       {:ecto_sql, "~> 3.4.5"},
-      {:postgrex, "~> 0.15.5"},
+      {:postgrex, "~> 0.15.6"},
       {:phoenix_html, "~> 2.14.2"},
       {:phoenix_live_reload, "~> 1.2.4", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2.7"},
+      {:phoenix_live_dashboard, "~> 0.2.8"},
       {:telemetry_metrics, "~> 0.5.0"},
       {:telemetry_poller, "~> 0.5.1"},
-      {:gettext, "~> 0.18.0"},
-      {:jason, "~> 1.2.1"},
+      {:gettext, "~> 0.18.1"},
+      {:jason, "~> 1.2.2"},
       {:plug_cowboy, "~> 2.3.0"},
       {:absinthe_plug, "~> 1.5.0"}
     ]
