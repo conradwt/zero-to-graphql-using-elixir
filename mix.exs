@@ -33,13 +33,13 @@ defmodule ZeroPhoenix.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.5"},
+      {:phoenix, "~> 1.5.6"},
       {:phoenix_ecto, "~> 4.2.0"},
       {:ecto_sql, "~> 3.4.5"},
       {:postgrex, "~> 0.15.6"},
       {:phoenix_html, "~> 2.14.2"},
       {:phoenix_live_reload, "~> 1.2.4", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2.8"},
+      {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
       {:telemetry_metrics, "~> 0.5.0"},
       {:telemetry_poller, "~> 0.5.1"},
       {:gettext, "~> 0.18.1"},
@@ -57,9 +57,10 @@ defmodule ZeroPhoenix.Mixfile do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end
 end
