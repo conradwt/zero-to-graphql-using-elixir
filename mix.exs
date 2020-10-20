@@ -39,7 +39,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:postgrex, "~> 0.15.6"},
       {:phoenix_html, "~> 2.14.2"},
       {:phoenix_live_reload, "~> 1.2.4", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
+      {:phoenix_live_dashboard, "~> 0.3.2"},
       {:telemetry_metrics, "~> 0.5.0"},
       {:telemetry_poller, "~> 0.5.1"},
       {:gettext, "~> 0.18.1"},
