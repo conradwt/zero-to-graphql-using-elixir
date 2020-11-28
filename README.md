@@ -95,43 +95,37 @@ Note: This tutorial was updated on macOS 10.15.7.
 1.  create the project
 
     ```bash
-    mix phx.new zero_phoenix --no-webpack
+    mix phx.new zero-to-graphql-using-phoenix --app zero_phoenix --module ZeroPhoenix --no-webpack
     ```
 
     Note: Just answer 'Y' to all the prompts that appear.
 
-2.  rename the project directory
-
-    ```bash
-    mv zero_phoenix zero-to-graphql-using-phoenix
-    ```
-
-3.  switch to the project directory
+2.  switch to the project directory
 
     ```bash
     cd zero-to-graphql-using-phoenix
     ```
 
-4.  update `username` and `password` database credentials which appears at the bottom of the following files:
+3.  update `username` and `password` database credentials which appears at the bottom of the following files:
 
     ```text
     config/dev.exs
     config/test.exs
     ```
 
-5.  create the database
+4.  create the database
 
     ```bash
     mix ecto.create
     ```
 
-6.  generate contexts, schemas, and migrations for `Person` resource
+5.  generate contexts, schemas, and migrations for `Person` resource
 
     ```bash
     mix phx.gen.context Account Person people first_name:string last_name:string username:string email:string
     ```
 
-7.  replace the generated `Person` model with the following:
+6.  replace the generated `Person` model with the following:
 
     `lib/zero_phoenix/account/person.ex`:
 
@@ -163,19 +157,19 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-8.  migrate the database
+7.  migrate the database
 
     ```bash
     mix ecto.migrate
     ```
 
-9.  generate contexts, schemas, and migrations for `Friendship` resource
+8.  generate contexts, schemas, and migrations for `Friendship` resource
 
     ```bash
     mix phx.gen.context Account Friendship friendships person_id:references:people friend_id:references:people
     ```
 
-10. replace the generated `Friendship` model with the following:
+9.  replace the generated `Friendship` model with the following:
 
     `lib/zero_phoenix/account/friendship.ex`:
 
@@ -206,13 +200,13 @@ Note: This tutorial was updated on macOS 10.15.7.
 
     Note: We want `friend_id` to reference the `people` table because our `friend_id` really represents a `Person` model.
 
-11. migrate the database
+10. migrate the database
 
     ```bash
     mix ecto.migrate
     ```
 
-12. create the seeds file
+11. create the seeds file
 
     `priv/repo/seeds.exs`:
 
@@ -271,13 +265,13 @@ Note: This tutorial was updated on macOS 10.15.7.
     |> Repo.insert
     ```
 
-13. seed the database
+12. seed the database
 
     ```bash
     mix run priv/repo/seeds.exs
     ```
 
-14. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
+13. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
 
     ```elixir
     defp deps do
@@ -299,13 +293,13 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-15. update our projects dependencies:
+14. update our projects dependencies:
 
     ```bash
     mix deps.get
     ```
 
-16. add the GraphQL schema which represents our entry point into our GraphQL structure:
+15. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
@@ -331,7 +325,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-17. add our Person type which will be performing queries against:
+16. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -370,7 +364,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-18. add route for mounting the GraphiQL browser endpoint:
+17. add route for mounting the GraphiQL browser endpoint:
 
     `lib/zero_phoenix_web/router.ex`:
 
@@ -386,19 +380,19 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-19. start the server
+18. start the server
 
     ```bash
     mix phx.server
     ```
 
-20. navigate to our application within the browser
+19. navigate to our application within the browser
 
     ```bash
     open http://localhost:4000/graphiql
     ```
 
-21. enter the GraphQL query on the left side of the browser
+20. enter the GraphQL query on the left side of the browser
 
     ```graphql
     {
@@ -417,7 +411,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     }
     ```
 
-22. run the GraphQL query
+21. run the GraphQL query
 
     ```text
     Control + Enter
