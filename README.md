@@ -6,13 +6,13 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.11.0 or newer](http://elixir-lang.org/install.html)
+- [Elixir 1.11.2 or newer](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.5.5 or newer](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.5.7 or newer](http://www.phoenixframework.org/docs/installation)
 
 - PostgreSQL 12.3.0 or newer
 
-Note: This tutorial was updated on macOS 10.15.6.
+Note: This tutorial was updated on macOS 10.15.7.
 
 ## Communication
 
