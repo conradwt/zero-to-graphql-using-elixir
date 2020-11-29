@@ -6,11 +6,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.11.1 or newer](http://elixir-lang.org/install.html)
+- [Elixir 1.11.2 or newer](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.5.6 or newer](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.5.7 or newer](http://www.phoenixframework.org/docs/installation)
 
-- PostgreSQL 13.0.1 or newer
+- PostgreSQL 13.1 or newer
 
 Note: This tutorial was updated on macOS 10.15.7.
 
@@ -39,7 +39,7 @@ Note: This tutorial was updated on macOS 10.15.7.
 3.  install dependencies
 
     ```bash
-    mix deps.get
+    mix do deps.get, deps.compile
     ```
 
 4.  create, migrate, and seed the database
@@ -98,7 +98,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     mix phx.new zero-to-graphql-using-phoenix --app zero_phoenix --module ZeroPhoenix --no-webpack
     ```
 
-    Note: Just answer 'Y' to all the prompts that appear.
+    Note: Just answer 'y' to all the prompts that appear.
 
 2.  switch to the project directory
 
@@ -276,27 +276,27 @@ Note: This tutorial was updated on macOS 10.15.7.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.5.6"},
-        {:phoenix_ecto, "~> 4.2.0"},
-        {:ecto_sql, "~> 3.4.5"},
-        {:postgrex, "~> 0.15.6"},
-        {:phoenix_html, "~> 2.14.2"},
-        {:phoenix_live_reload, "~> 1.2.4", only: :dev},
-        {:phoenix_live_dashboard, "~> 0.3.2"},
-        {:telemetry_metrics, "~> 0.5.0"},
-        {:telemetry_poller, "~> 0.5.1"},
-        {:gettext, "~> 0.18.1"},
-        {:jason, "~> 1.2.2"},
-        {:plug_cowboy, "~> 2.3.0"},
-        {:absinthe_plug, "~> 1.5.0"}
-      ]
-    end
+         {:phoenix, "~> 1.5.7"},
+         {:phoenix_ecto, "~> 4.2.1"},
+         {:ecto_sql, "~> 3.5.3"},
+         {:postgrex, "~> 0.15.7"},
+         {:phoenix_html, "~> 2.14.2"},
+         {:phoenix_live_reload, "~> 1.3.0", only: :dev},
+         {:phoenix_live_dashboard, "~> 0.4.0"},
+         {:telemetry_metrics, "~> 0.6.0"},
+         {:telemetry_poller, "~> 0.5.1"},
+         {:gettext, "~> 0.18.2"},
+         {:jason, "~> 1.2.2"},
+         {:plug_cowboy, "~> 2.4.1"},
+         {:absinthe_plug, "~> 1.5.1"}
+       ]
+     end
     ```
 
 14. update our projects dependencies:
 
     ```bash
-    mix deps.get
+    mix do deps.get, deps.compile
     ```
 
 15. add the GraphQL schema which represents our entry point into our GraphQL structure:
