@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - [Phoenix 1.5.7 or newer](http://www.phoenixframework.org/docs/installation)
 
-- PostgreSQL 12.3.0 or newer
+- PostgreSQL 13.1 or newer
 
 Note: This tutorial was updated on macOS 10.15.7.
 
@@ -39,7 +39,7 @@ Note: This tutorial was updated on macOS 10.15.7.
 3.  install dependencies
 
     ```bash
-    mix deps.get
+    mix do deps.get, deps.compile
     ```
 
 4.  create, migrate, and seed the database
@@ -276,19 +276,19 @@ Note: This tutorial was updated on macOS 10.15.7.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.5.4"},
-        {:phoenix_ecto, "~> 4.1.0"},
-        {:ecto_sql, "~> 3.4.5"},
-        {:postgrex, "~> 0.15.5"},
+        {:phoenix, "~> 1.5.7"},
+        {:phoenix_ecto, "~> 4.2.1"},
+        {:ecto_sql, "~> 3.5.3"},
+        {:postgrex, "~> 0.15.7"},
         {:phoenix_html, "~> 2.14.2"},
-        {:phoenix_live_reload, "~> 1.2.4", only: :dev},
-        {:phoenix_live_dashboard, "~> 0.2.7"},
-        {:telemetry_metrics, "~> 0.5.0"},
+        {:phoenix_live_reload, "~> 1.3.0", only: :dev},
+        {:phoenix_live_dashboard, "~> 0.4.0"},
+        {:telemetry_metrics, "~> 0.6.0"},
         {:telemetry_poller, "~> 0.5.1"},
-        {:gettext, "~> 0.18.0"},
-        {:jason, "~> 1.2.1"},
-        {:plug_cowboy, "~> 2.3.0"},
-        {:absinthe_plug, "~> 1.5.0"}
+        {:gettext, "~> 0.18.2"},
+        {:jason, "~> 1.2.2"},
+        {:plug_cowboy, "~> 2.4.1"},
+        {:absinthe_plug, "~> 1.5.1"}
       ]
     end
     ```
@@ -296,7 +296,7 @@ Note: This tutorial was updated on macOS 10.15.7.
 14. update our projects dependencies:
 
     ```bash
-    mix deps.get
+    mix do deps.get, deps.compile
     ```
 
 15. add the GraphQL schema which represents our entry point into our GraphQL structure:
