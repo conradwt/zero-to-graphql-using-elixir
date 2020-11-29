@@ -276,21 +276,21 @@ Note: This tutorial was updated on macOS 10.15.7.
     ```elixir
     defp deps do
       [
-         {:phoenix, "~> 1.5.7"},
-         {:phoenix_ecto, "~> 4.2.1"},
-         {:ecto_sql, "~> 3.5.3"},
-         {:postgrex, "~> 0.15.7"},
-         {:phoenix_html, "~> 2.14.2"},
-         {:phoenix_live_reload, "~> 1.3.0", only: :dev},
-         {:phoenix_live_dashboard, "~> 0.4.0"},
-         {:telemetry_metrics, "~> 0.6.0"},
-         {:telemetry_poller, "~> 0.5.1"},
-         {:gettext, "~> 0.18.2"},
-         {:jason, "~> 1.2.2"},
-         {:plug_cowboy, "~> 2.4.1"},
-         {:absinthe_plug, "~> 1.5.1"}
-       ]
-     end
+        {:phoenix, "~> 1.5.7"},
+        {:phoenix_ecto, "~> 4.2.1"},
+        {:ecto_sql, "~> 3.5.3"},
+        {:postgrex, "~> 0.15.7"},
+        {:phoenix_html, "~> 2.14.2"},
+        {:phoenix_live_reload, "~> 1.3.0", only: :dev},
+        {:phoenix_live_dashboard, "~> 0.4.0"},
+        {:telemetry_metrics, "~> 0.6.0"},
+        {:telemetry_poller, "~> 0.5.1"},
+        {:gettext, "~> 0.18.2"},
+        {:jason, "~> 1.2.2"},
+        {:plug_cowboy, "~> 2.4.1"},
+        {:absinthe_plug, "~> 1.5.1"}
+      ]
+    end
     ```
 
 14. update our projects dependencies:
