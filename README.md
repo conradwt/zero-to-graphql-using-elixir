@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.11.2 or newer](http://elixir-lang.org/install.html)
+- [Elixir 1.11.3 or newer](http://elixir-lang.org/install.html)
 
 - [Phoenix 1.5.7 or newer](http://www.phoenixframework.org/docs/installation)
 
