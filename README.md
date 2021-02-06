@@ -12,7 +12,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 13.1 or newer
 
-Note: This tutorial was updated on macOS 10.15.7.
+Note: This tutorial was updated on macOS 11.2.
 
 ## Communication
 
@@ -449,4 +449,4 @@ Zero to GraphQL Using Phoenix is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-copyright:: (c) Copyright 2018 - 2020 Conrad Taylor. All Rights Reserved.
+copyright:: (c) Copyright 2018 - 2021 Conrad Taylor. All Rights Reserved.
