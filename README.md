@@ -8,11 +8,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 - [Elixir 1.11.3 or newer](http://elixir-lang.org/install.html)
 
-- [Phoenix 1.5.7 or newer](http://www.phoenixframework.org/docs/installation)
+- [Phoenix 1.5.8 or newer](http://www.phoenixframework.org/docs/installation)
 
-- PostgreSQL 13.1 or newer
+- PostgreSQL 13.2 or newer
 
-Note: This tutorial was updated on macOS 11.2.
+Note: This tutorial was updated on macOS 11.2.2.
 
 ## Communication
 
@@ -276,11 +276,11 @@ Note: This tutorial was updated on macOS 11.2.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.5.7"},
+        {:phoenix, "~> 1.5.8"},
         {:phoenix_ecto, "~> 4.2.1"},
-        {:ecto_sql, "~> 3.5.3"},
-        {:postgrex, "~> 0.15.7"},
-        {:phoenix_html, "~> 2.14.2"},
+        {:ecto_sql, "~> 3.5.4"},
+        {:postgrex, "~> 0.15.8"},
+        {:phoenix_html, "~> 2.14.3"},
         {:phoenix_live_reload, "~> 1.3.0", only: :dev},
         {:phoenix_live_dashboard, "~> 0.4.0"},
         {:telemetry_metrics, "~> 0.6.0"},
@@ -288,7 +288,7 @@ Note: This tutorial was updated on macOS 11.2.
         {:gettext, "~> 0.18.2"},
         {:jason, "~> 1.2.2"},
         {:plug_cowboy, "~> 2.4.1"},
-        {:absinthe_plug, "~> 1.5.1"}
+        {:absinthe_plug, "~> 1.5.5"}
       ]
     end
     ```
