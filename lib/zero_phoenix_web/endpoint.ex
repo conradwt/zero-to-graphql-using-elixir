@@ -50,5 +50,36 @@ defmodule ZeroPhoenixWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+
+  # To use cookies in requests
+
+  # The cookie's value must contain SameSite=None; Secure
+  # These CORS headers need to be present in your server's response to Studio:
+  # Access-Control-Allow-Origin: https://studio.apollographql.com
+  # Access-Control-Allow-Credentials: true
+
+  # Access-Control-Allow-Origin: https://studio.apollographql.com
+  # Access-Control-Allow-Credentials: true
+
+  # working solution
+  #
+  # plug Corsica,
+  #   allow_headers: :all,
+  #   origins: "*"
+
+  # not working solution
+  #
+  # plug Corsica,
+  #   expose_headers: %{
+  #     "Access-Control-Allow-Origin": ["https://studio.apollographql.com"],
+  #     "Access-Control-Allow-Credentials": true
+  #   }
+
+  # not working solution
+
+  plug Corsica,
+    origins: ["https://studio.apollographql.com"],
+    allow_credentials: true
+
   plug ZeroPhoenixWeb.Router
 end

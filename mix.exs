@@ -20,7 +20,7 @@ defmodule ZeroPhoenix.Mixfile do
   def application do
     [
       mod: {ZeroPhoenix.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :corsica]
     ]
   end
 
@@ -45,7 +45,8 @@ defmodule ZeroPhoenix.Mixfile do
       {:gettext, "~> 0.18.2"},
       {:jason, "~> 1.2.2"},
       {:plug_cowboy, "~> 2.4.1"},
-      {:absinthe_plug, "~> 1.5.5"}
+      {:absinthe_plug, "~> 1.5.5"},
+      {:corsica, "~> 1.0"}
     ]
   end
 
