@@ -18,8 +18,8 @@ Note: This tutorial was updated on macOS 11.2.3.
 
 ## Communication
 
-- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/graphql). (Tag 'graphql')
-- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/graphql).
+- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/absinthe). (Tag 'absinthe')
+- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/absinthe).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
