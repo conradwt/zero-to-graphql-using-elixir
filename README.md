@@ -6,13 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- [Elixir 1.11.3 or newer](http://elixir-lang.org/install.html)
+- Elixir 1.11.4 or newer
 
-- [Phoenix 1.5.7 or newer](http://www.phoenixframework.org/docs/installation)
+- Erlang 23.3.1 or newer
 
-- PostgreSQL 13.1 or newer
+- Phoenix 1.5.8 or newer
 
-Note: This tutorial was updated on macOS 11.2.
+- PostgreSQL 13.2 or newer
+
+Note: This tutorial was updated on macOS 11.2.3.
 
 ## Communication
 
@@ -276,19 +278,19 @@ Note: This tutorial was updated on macOS 11.2.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.5.7"},
+        {:phoenix, "~> 1.5.8"},
         {:phoenix_ecto, "~> 4.2.1"},
-        {:ecto_sql, "~> 3.5.3"},
-        {:postgrex, "~> 0.15.7"},
-        {:phoenix_html, "~> 2.14.2"},
-        {:phoenix_live_reload, "~> 1.3.0", only: :dev},
+        {:ecto_sql, "~> 3.6.1"},
+        {:postgrex, "~> 0.15.8"},
+        {:phoenix_html, "~> 2.14.3"},
+        {:phoenix_live_reload, "~> 1.3.1", only: :dev},
         {:phoenix_live_dashboard, "~> 0.4.0"},
         {:telemetry_metrics, "~> 0.6.0"},
         {:telemetry_poller, "~> 0.5.1"},
         {:gettext, "~> 0.18.2"},
         {:jason, "~> 1.2.2"},
         {:plug_cowboy, "~> 2.4.1"},
-        {:absinthe_plug, "~> 1.5.1"}
+        {:absinthe_plug, "~> 1.5.7"}
       ]
     end
     ```

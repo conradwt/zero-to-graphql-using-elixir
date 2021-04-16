@@ -5,7 +5,7 @@ defmodule ZeroPhoenix.Mixfile do
     [
       app: :zero_phoenix,
       version: "0.0.1",
-      elixir: "~> 1.11.3",
+      elixir: "~> 1.11.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -33,19 +33,19 @@ defmodule ZeroPhoenix.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.7"},
+      {:phoenix, "~> 1.5.8"},
       {:phoenix_ecto, "~> 4.2.1"},
-      {:ecto_sql, "~> 3.5.3"},
-      {:postgrex, "~> 0.15.7"},
-      {:phoenix_html, "~> 2.14.2"},
-      {:phoenix_live_reload, "~> 1.3.0", only: :dev},
+      {:ecto_sql, "~> 3.6.1"},
+      {:postgrex, "~> 0.15.8"},
+      {:phoenix_html, "~> 2.14.3"},
+      {:phoenix_live_reload, "~> 1.3.1", only: :dev},
       {:phoenix_live_dashboard, "~> 0.4.0"},
       {:telemetry_metrics, "~> 0.6.0"},
       {:telemetry_poller, "~> 0.5.1"},
       {:gettext, "~> 0.18.2"},
       {:jason, "~> 1.2.2"},
       {:plug_cowboy, "~> 2.4.1"},
-      {:absinthe_plug, "~> 1.5.5"}
+      {:absinthe_plug, "~> 1.5.7"}
     ]
   end
 
