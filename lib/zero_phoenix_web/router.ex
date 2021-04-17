@@ -13,23 +13,14 @@ defmodule ZeroPhoenixWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ZeroPhoenixWeb do
-    # Use the default browser stack
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
-
-  scope "/api", ZeroPhoenixWeb do
+  scope "/" do
     pipe_through :api
 
-    resources "/people", PersonController, except: [:new, :edit]
-  end
+    forward "/api",
+            Absinthe.Plug,
+            schema: ZeroPhoenixWeb.Graphql.Schema
 
-  scope "/graphiql" do
-    pipe_through :api
-
-    forward "/",
+    forward "/graphiql",
             Absinthe.Plug.GraphiQL,
             schema: ZeroPhoenixWeb.Graphql.Schema,
             json_codec: Jason,
