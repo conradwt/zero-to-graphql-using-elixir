@@ -16,7 +16,7 @@ defmodule ZeroPhoenixWeb.Router do
   scope "/" do
     pipe_through :api
 
-    forward "/api",
+    forward "/graphql",
             Absinthe.Plug,
             schema: ZeroPhoenixWeb.Graphql.Schema
 

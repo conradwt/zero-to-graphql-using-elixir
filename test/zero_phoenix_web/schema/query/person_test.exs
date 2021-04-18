@@ -27,7 +27,7 @@ defmodule ZeroPhoenixWeb.Schema.Query.PersonTest do
     response =
       post(
         build_conn(),
-        "/api",
+        "/graphql",
         query: @query,
         variables: %{"personId" => person.id}
       )
