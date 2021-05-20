@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Elixir 1.12.0 or newer
 
-- Erlang 23.3.4 or newer
+- Erlang 24.0 or newer
 
 - Phoenix 1.5.8 or newer
 
@@ -278,10 +278,10 @@ Note: This tutorial was updated on macOS 11.3.1.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.5.8"},
+        {:phoenix, "~> 1.5.9"},
         {:phoenix_ecto, "~> 4.2.1"},
         {:ecto_sql, "~> 3.6.1"},
-        {:postgrex, "~> 0.15.8"},
+        {:postgrex, "~> 0.15.9"},
         {:phoenix_html, "~> 2.14.3"},
         {:phoenix_live_reload, "~> 1.3.1", only: :dev},
         {:phoenix_live_dashboard, "~> 0.4.0"},
@@ -289,8 +289,8 @@ Note: This tutorial was updated on macOS 11.3.1.
         {:telemetry_poller, "~> 0.5.1"},
         {:gettext, "~> 0.18.2"},
         {:jason, "~> 1.2.2"},
-        {:plug_cowboy, "~> 2.4.1"},
-        {:absinthe_plug, "~> 1.5.7"}
+        {:plug_cowboy, "~> 2.5.0"},
+        {:absinthe_plug, "~> 1.5.8"}
       ]
     end
     ```
