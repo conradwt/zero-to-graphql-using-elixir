@@ -38,7 +38,7 @@ Note: This tutorial was updated on macOS 11.4.
     cd /path/to/zero-to-graphql-using-phoenix
     ```
 
-3.  install dependencies
+3.  install and compile dependencies
 
     ```bash
     mix do deps.get, deps.compile
@@ -121,13 +121,13 @@ Note: This tutorial was updated on macOS 11.4.
     mix ecto.create
     ```
 
-5.  generate contexts, schemas, and migrations for `Person` resource
+5.  generate contexts, schemas, and migrations for the `Person` resource
 
     ```bash
     mix phx.gen.context Account Person people first_name:string last_name:string username:string email:string
     ```
 
-6.  replace the generated `Person` model with the following:
+6.  replace the generated `Person` schema with the following:
 
     `lib/zero_phoenix/account/person.ex`:
 
@@ -165,13 +165,35 @@ Note: This tutorial was updated on macOS 11.4.
     mix ecto.migrate
     ```
 
-8.  generate contexts, schemas, and migrations for `Friendship` resource
+8.  generate contexts, schemas, and migrations for the `Friendship` resource
 
     ```bash
     mix phx.gen.context Account Friendship friendships person_id:references:people friend_id:references:people
     ```
 
-9.  replace the generated `Friendship` model with the following:
+9.  replace the generated `CreateFriendship` migration with the following:
+
+    `priv/repo/migrations/<some datetime>_create_friendship.exs`:
+
+    ```zsh
+    defmodule ZeroPhoenix.Repo.Migrations.CreateFriendship do
+      use Ecto.Migration
+
+      def change do
+        create table(:friendships) do
+          add :person_id, references(:people, on_delete: :delete_all)
+          add :friend_id, references(:people, on_delete: :delete_all)
+
+          timestamps()
+        end
+
+        create index(:friendships, [:person_id])
+        create index(:friendships, [:friend_id])
+      end
+    end
+    ```
+
+10. replace the generated `Friendship` schema with the following:
 
     `lib/zero_phoenix/account/friendship.ex`:
 
@@ -200,80 +222,144 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-    Note: We want `friend_id` to reference the `people` table because our `friend_id` really represents a `Person` model.
+    Note: We want `friend_id` to reference the `people` table because our `friend_id` really represents a `Person` schema.
 
-10. migrate the database
+11. migrate the database
 
     ```bash
     mix ecto.migrate
     ```
 
-11. create the seeds file
+12. create dev support directory
+
+    ```zsh
+    mkdir -p dev/support
+    ```
+
+13. create `seeds.ex` support file with the following content:
+
+    `dev/support/seeds.ex`:
+
+    ```zsh
+    defmodule ZeroPhoenix.Seeds do
+      alias ZeroPhoenix.Account.{Person, Friendship}
+      alias ZeroPhoenix.Repo
+
+      def run() do
+        #
+        # reset database
+        #
+
+        reset()
+
+        #
+        # people
+        #
+
+        me =
+          Repo.insert!(%Person{
+            first_name: "Conrad",
+            last_name: "Taylor",
+            email: "conradwt@gmail.com",
+            username: "conradwt"
+          })
+
+        dhh =
+          Repo.insert!(%Person{
+            first_name: "David",
+            last_name: "Heinemeier Hansson",
+            email: "dhh@37signals.com",
+            username: "dhh"
+          })
+
+        ezra =
+          Repo.insert!(%Person{
+            first_name: "Ezra",
+            last_name: "Zygmuntowicz",
+            email: "ezra@merbivore.com",
+            username: "ezra"
+          })
+
+        matz =
+          Repo.insert!(%Person{
+            first_name: "Yukihiro",
+            last_name: "Matsumoto",
+            email: "matz@heroku.com",
+            username: "matz"
+          })
+
+        #
+        # friendships
+        #
+
+        me
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: matz.id})
+        |> Repo.insert()
+
+        dhh
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: ezra.id})
+        |> Repo.insert()
+
+        dhh
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: matz.id})
+        |> Repo.insert()
+
+        ezra
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: dhh.id})
+        |> Repo.insert()
+
+        ezra
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: matz.id})
+        |> Repo.insert()
+
+        matz
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: me.id})
+        |> Repo.insert()
+
+        matz
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: ezra.id})
+        |> Repo.insert()
+
+        matz
+        |> Ecto.build_assoc(:friendships)
+        |> Friendship.changeset(%{friend_id: dhh.id})
+        |> Repo.insert()
+
+        :ok
+      end
+
+      def reset do
+        Friendship
+        |> Repo.delete_all()
+
+        Person
+        |> Repo.delete_all()
+      end
+    end
+    ```
+
+14. update the `seeds.exs` file with the following content:
 
     `priv/repo/seeds.exs`:
 
     ```elixir
-    alias ZeroPhoenix.Repo
-    alias ZeroPhoenix.Account.Person
-    alias ZeroPhoenix.Account.Friendship
-
-    # reset the datastore
-    Repo.delete_all(Person)
-
-    # insert people
-    me = Repo.insert!(%Person{ first_name: "Conrad", last_name: "Taylor", email: "conradwt@gmail.com", username: "conradwt" })
-    dhh = Repo.insert!(%Person{ first_name: "David", last_name: "Heinemeier Hansson", email: "dhh@37signals.com", username: "dhh" })
-    ezra = Repo.insert!(%Person{ first_name: "Ezra", last_name: "Zygmuntowicz", email: "ezra@merbivore.com", username: "ezra" })
-    matz = Repo.insert!(%Person{ first_name: "Yukihiro", last_name: "Matsumoto", email: "matz@heroku.com", username: "matz" })
-
-    me
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: me.id, friend_id: matz.id } )
-    |> Repo.insert
-
-    dhh
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: dhh.id, friend_id: ezra.id } )
-    |> Repo.insert
-
-    dhh
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: dhh.id, friend_id: matz.id } )
-    |> Repo.insert
-
-    ezra
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: ezra.id, friend_id: dhh.id } )
-    |> Repo.insert
-
-    ezra
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: ezra.id, friend_id: matz.id } )
-    |> Repo.insert
-
-    matz
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: matz.id, friend_id: me.id } )
-    |> Repo.insert
-
-    matz
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: matz.id, friend_id: ezra.id } )
-    |> Repo.insert
-
-    matz
-    |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset( %{ person_id: matz.id, friend_id: dhh.id } )
-    |> Repo.insert
+    ZeroPhoenix.Seeds.run()
     ```
 
-12. seed the database
+15. seed the database
 
     ```bash
     mix run priv/repo/seeds.exs
     ```
 
-13. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
+16. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
 
     ```elixir
     defp deps do
@@ -295,13 +381,13 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-14. update our projects dependencies:
+17. install and compile dependencies
 
     ```bash
     mix do deps.get, deps.compile
     ```
 
-15. add the GraphQL schema which represents our entry point into our GraphQL structure:
+18. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
@@ -327,7 +413,7 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-16. add our Person type which will be performing queries against:
+19. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -366,7 +452,7 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-17. add route for mounting the GraphiQL browser endpoint:
+20. add route for mounting the GraphiQL browser endpoint:
 
     `lib/zero_phoenix_web/router.ex`:
 
@@ -382,19 +468,19 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-18. start the server
+21. start the server
 
     ```bash
     mix phx.server
     ```
 
-19. navigate to our application within the browser
+22. navigate to our application within the browser
 
     ```bash
     open http://localhost:4000/graphiql
     ```
 
-20. enter the GraphQL query on the left side of the browser
+23. enter the GraphQL query on the left side of the browser
 
     ```graphql
     {
@@ -413,7 +499,7 @@ Note: This tutorial was updated on macOS 11.4.
     }
     ```
 
-21. run the GraphQL query
+24. run the GraphQL query
 
     ```text
     Control + Enter

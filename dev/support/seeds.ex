@@ -7,7 +7,7 @@ defmodule ZeroPhoenix.Seeds do
     # reset database
     #
 
-    # reset()
+    reset()
 
     #
     # people
@@ -51,42 +51,42 @@ defmodule ZeroPhoenix.Seeds do
 
     me
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: me.id, friend_id: matz.id})
+    |> Friendship.changeset(%{friend_id: matz.id})
     |> Repo.insert()
 
     dhh
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: dhh.id, friend_id: ezra.id})
+    |> Friendship.changeset(%{friend_id: ezra.id})
     |> Repo.insert()
 
     dhh
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: dhh.id, friend_id: matz.id})
+    |> Friendship.changeset(%{friend_id: matz.id})
     |> Repo.insert()
 
     ezra
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: ezra.id, friend_id: dhh.id})
+    |> Friendship.changeset(%{friend_id: dhh.id})
     |> Repo.insert()
 
     ezra
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: ezra.id, friend_id: matz.id})
+    |> Friendship.changeset(%{friend_id: matz.id})
     |> Repo.insert()
 
     matz
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: matz.id, friend_id: me.id})
+    |> Friendship.changeset(%{friend_id: me.id})
     |> Repo.insert()
 
     matz
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: matz.id, friend_id: ezra.id})
+    |> Friendship.changeset(%{friend_id: ezra.id})
     |> Repo.insert()
 
     matz
     |> Ecto.build_assoc(:friendships)
-    |> Friendship.changeset(%{person_id: matz.id, friend_id: dhh.id})
+    |> Friendship.changeset(%{friend_id: dhh.id})
     |> Repo.insert()
 
     :ok
@@ -96,7 +96,7 @@ defmodule ZeroPhoenix.Seeds do
     Friendship
     |> Repo.delete_all()
 
-    Preson
+    Person
     |> Repo.delete_all()
   end
 end
