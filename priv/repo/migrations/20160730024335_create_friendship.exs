@@ -3,8 +3,8 @@ defmodule ZeroPhoenix.Repo.Migrations.CreateFriendship do
 
   def change do
     create table(:friendships) do
-      add :person_id, references(:people, on_delete: :nothing)
-      add :friend_id, references(:people, on_delete: :nothing)
+      add :person_id, references(:people, on_delete: :delete_all)
+      add :friend_id, references(:people, on_delete: :delete_all)
 
       timestamps()
     end
