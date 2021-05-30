@@ -29,7 +29,7 @@ Note: This tutorial was updated on macOS 11.4.
 1.  clone this repository
 
     ```bash
-    git clone git@github.com:conradwt/zero-to-graphql-using-phoenix.git
+    git clone https://github.com/conradwt/zero-to-graphql-using-phoenix.git
     ```
 
 2.  change directory location
