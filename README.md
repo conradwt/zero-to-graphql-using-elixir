@@ -236,7 +236,24 @@ Note: This tutorial was updated on macOS 11.4.
     mkdir -p dev/support
     ```
 
-13. create `seeds.ex` support file with the following content:
+13. update the search for compiler within `mix.exs`:
+
+    change:
+
+    ```elixir
+    defp elixirc_paths(:test), do: ["lib", "test/support"]
+    defp elixirc_paths(_), do: ["lib"]
+    ```
+
+    to:
+
+    ```elixir
+    defp elixirc_paths(:test), do: ["lib", "dev/support", "test/support"]
+    defp elixirc_paths(:dev), do: ["lib", "dev/support"]
+    defp elixirc_paths(_), do: ["lib"]
+    ```
+
+14. create `seeds.ex` support file with the following content:
 
     `dev/support/seeds.ex`:
 
@@ -345,7 +362,7 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-14. update the `seeds.exs` file with the following content:
+15. update the `seeds.exs` file with the following content:
 
     `priv/repo/seeds.exs`:
 
@@ -353,13 +370,13 @@ Note: This tutorial was updated on macOS 11.4.
     ZeroPhoenix.Seeds.run()
     ```
 
-15. seed the database
+16. seed the database
 
     ```bash
     mix run priv/repo/seeds.exs
     ```
 
-16. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
+17. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
 
     ```elixir
     defp deps do
@@ -382,13 +399,13 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-17. install and compile dependencies
+18. install and compile dependencies
 
     ```bash
     mix do deps.get, deps.compile
     ```
 
-18. configure `CORSPlug` by adding the following content:
+19. configure `CORSPlug` by adding the following content:
 
     `lib/zero_phoenix_web/endpoint.ex`:
 
@@ -402,7 +419,7 @@ Note: This tutorial was updated on macOS 11.4.
     plug(ZeroPhoenixWeb.Router)
     ```
 
-19. add the GraphQL schema which represents our entry point into our GraphQL structure:
+20. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
@@ -428,7 +445,7 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-20. add our Person type which will be performing queries against:
+21. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -467,7 +484,7 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-21. add route for mounting the GraphiQL browser endpoint:
+22. add route for mounting the GraphiQL browser endpoint:
 
     `lib/zero_phoenix_web/router.ex`:
 
@@ -483,19 +500,19 @@ Note: This tutorial was updated on macOS 11.4.
     end
     ```
 
-22. start the server
+23. start the server
 
     ```bash
     mix phx.server
     ```
 
-23. navigate to our application within the browser
+24. navigate to our application within the browser
 
     ```bash
     open http://localhost:4000/graphiql
     ```
 
-24. enter the GraphQL query on the left side of the browser
+25. enter the GraphQL query on the left side of the browser
 
     ```graphql
     {
@@ -514,7 +531,7 @@ Note: This tutorial was updated on macOS 11.4.
     }
     ```
 
-25. run the GraphQL query
+26. run the GraphQL query
 
     ```text
     Control + Enter
