@@ -36,6 +36,31 @@ defmodule ZeroPhoenix.Account do
 
   """
   def get_person!(id), do: Repo.get!(Person, id)
+  def get_person(id), do: Repo.get(Person, id)
+
+  @doc """
+  Gets a list of persons.
+
+  ## Examples
+
+      iex> get_persons!([123])
+      {:ok, [%Person{}]}
+
+      iex> get_persons!([123, 456])
+      {:ok, [%Person{}]}
+
+  """
+  def get_persons(ids) do
+    ids
+    |> Enum.reduce([], fn id, acc ->
+      with person = %Person{} <- get_person(id) do
+        [person | acc]
+      else
+        nil -> acc
+      end
+    end)
+    |> Enum.reverse()
+  end
 
   @doc """
   Creates a person.
