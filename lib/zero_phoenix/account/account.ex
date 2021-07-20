@@ -39,27 +39,25 @@ defmodule ZeroPhoenix.Account do
   def get_person(id), do: Repo.get(Person, id)
 
   @doc """
-  Gets a list of persons.
+  Gets people from given list ids.
+
+  Returns `[]` if ids are empty or if ids don't exist.
 
   ## Examples
 
-      iex> get_persons!([123])
+      iex> get_people([123])
       {:ok, [%Person{}]}
 
-      iex> get_persons!([123, 456])
-      {:ok, [%Person{}]}
+      iex> get_people([456, 789])
+      {:ok, []}
 
   """
-  def get_persons(ids) do
-    ids
-    |> Enum.reduce([], fn id, acc ->
-      with person = %Person{} <- get_person(id) do
-        [person | acc]
-      else
-        nil -> acc
-      end
-    end)
-    |> Enum.reverse()
+
+  def get_people([]), do: Repo.all(Person)
+
+  def get_people(ids) do
+    from(p in Person, where: p.id in ^ids)
+    |> Repo.all()
   end
 
   @doc """

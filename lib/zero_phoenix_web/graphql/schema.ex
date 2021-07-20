@@ -19,11 +19,11 @@ defmodule ZeroPhoenixWeb.Graphql.Schema do
       end)
     end
 
-    field :persons, type: list_of(:person) do
-      arg(:ids, list_of(:id))
+    field :people, type: list_of(:person) do
+      arg(:ids, list_of(:id), default_value: [])
 
       resolve(fn %{ids: ids}, _info ->
-        {:ok, Account.get_persons(ids)}
+        {:ok, Account.get_people(ids)}
       end)
     end
   end
