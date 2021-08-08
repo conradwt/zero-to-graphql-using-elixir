@@ -5,6 +5,7 @@ defmodule ZeroPhoenixWeb.Graphql.Schema do
 
   alias ZeroPhoenix.Repo
   alias ZeroPhoenix.Account.Person
+  alias ZeroPhoenix.Account
 
   query do
     field :person, type: :person do
@@ -15,6 +16,14 @@ defmodule ZeroPhoenixWeb.Graphql.Schema do
           nil -> {:error, "Person id #{id} not found"}
           person -> {:ok, person}
         end
+      end)
+    end
+
+    field :people, type: list_of(:person) do
+      arg(:ids, list_of(:id), default_value: [])
+
+      resolve(fn %{ids: ids}, _info ->
+        {:ok, Account.get_people(ids)}
       end)
     end
   end
