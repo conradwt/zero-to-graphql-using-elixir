@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Erlang 24.0.5 or newer
 
-- Phoenix 1.5.9 or newer
+- Phoenix 1.5.10 or newer
 
 - PostgreSQL 13.3 or newer
 
