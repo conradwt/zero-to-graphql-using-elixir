@@ -64,7 +64,7 @@ Note: This tutorial was updated on macOS 11.5.2.
     open http://localhost:4000/graphiql
     ```
 
-7.  enter and run GraphQL query
+7.  enter the below GraphQL query on the left side of the browser window
 
     ```graphql
     {
@@ -512,7 +512,7 @@ Note: This tutorial was updated on macOS 11.5.2.
     open http://localhost:4000/graphiql
     ```
 
-25. enter the GraphQL query on the left side of the browser
+25. enter the below GraphQL query on the left side of the browser window
 
     ```graphql
     {
