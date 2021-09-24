@@ -2,10 +2,6 @@
 # from environment variables. You can also hardcode secrets,
 # although such is generally not recommended and you have to
 # remember to add this file to your .gitignore.
-
-# Reference:
-#   https://hexdocs.pm/phoenix/releases.html#runtime-configuration
-
 import Config
 
 database_url =
@@ -15,7 +11,7 @@ database_url =
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
-config :zero_phoenix, ZeroPhoenix.Repo,
+config :flix, Flix.Repo,
   # ssl: true,
   url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
@@ -27,16 +23,20 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
-config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
-  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
-  secret_key_base: secret_key_base
+config :flix, FlixWeb.Endpoint,
+  http: [
+    port: String.to_integer(System.get_env("PORT") || "4000"),
+    transport_options: [socket_opts: [:inet6]]
+  ]
 
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start each relevant endpoint:
 #
-config :zero_phoenix, ZeroPhoenixWeb.Endpoint, server: true
+
+config :flix, FlixWeb.Endpoint, server: true
+
 #
 # Then you can assemble a release by calling `mix release`.
 # See `mix help release` for more information.

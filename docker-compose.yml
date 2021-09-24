@@ -1,0 +1,53 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+
+    command: ['mix', 'phx.server']
+
+    entrypoint: ./dev.entrypoint.sh
+
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - MIX_ENV=dev
+
+    ports:
+      - 4000:4000
+
+    stdin_open: true
+
+    tty: true
+
+    volumes:
+      - .:/home/darnoc
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:13.4-alpine
+
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+    ports:
+      - 5432:5432
+
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data: {}
