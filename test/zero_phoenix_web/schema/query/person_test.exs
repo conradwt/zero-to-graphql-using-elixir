@@ -10,15 +10,15 @@ defmodule ZeroPhoenixWeb.Schema.Query.PersonTest do
     ZeroPhoenix.Seeds.run()
   end
 
-  @query """
-  query GetPerson($personId: ID!) {
-    person(id: $personId) {
-      email
-    }
-  }
-  """
-
   test "get person by ID" do
+    query = """
+      query GetPerson($personId: ID!) {
+        person(id: $personId) {
+          email
+        }
+      }
+    """
+
     person =
       Person
       |> first()
@@ -28,16 +28,16 @@ defmodule ZeroPhoenixWeb.Schema.Query.PersonTest do
       post(
         build_conn(),
         "/graphql",
-        query: @query,
+        query: query,
         variables: %{"personId" => person.id}
       )
 
     assert json_response(response, 200) == %{
-             "data" => %{
-               "person" => %{
-                 "email" => "conradwt@gmail.com"
-               }
-             }
-           }
+      "data" => %{
+        "person" => %{
+          "email" => "conradwt@gmail.com"
+        }
+      }
+    }
   end
 end
