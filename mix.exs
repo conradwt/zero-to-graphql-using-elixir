@@ -4,7 +4,7 @@ defmodule ZeroPhoenix.Mixfile do
   def project do
     [
       app: :zero_phoenix,
-      version: "2.4.4",
+      version: "2.5.0",
       elixir: "~> 1.13.0-dev",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
