@@ -28,39 +28,37 @@ Note: This tutorial was updated on macOS 11.6.
 
 1.  clone this repository
 
-    ```bash
+    ```zsh
     git clone https://github.com/conradwt/zero-to-graphql-using-phoenix.git
     ```
 
 2.  change directory location
 
-    ```bash
+    ```zsh
     cd /path/to/zero-to-graphql-using-phoenix
     ```
 
 3.  install and compile dependencies
 
-    ```bash
+    ```zsh
     mix do deps.get, deps.compile
     ```
 
 4.  create, migrate, and seed the database
 
-    ```bash
-    mix ecto.create
-    mix ecto.migrate
-    mix ecto.seed
+    ```zsh
+    mix ecto.setup
     ```
 
 5.  start the server
 
-    ```bash
+    ```zsh
     mix phx.server
     ```
 
 6.  navigate to our application within the browser
 
-    ```bash
+    ```zsh
     open http://localhost:4000/graphiql
     ```
 
@@ -96,7 +94,7 @@ Note: This tutorial was updated on macOS 11.6.
 
 1.  create the project
 
-    ```bash
+    ```zsh
     mix phx.new zero-to-graphql-using-phoenix --app zero_phoenix --module ZeroPhoenix --no-webpack
     ```
 
@@ -104,7 +102,7 @@ Note: This tutorial was updated on macOS 11.6.
 
 2.  switch to the project directory
 
-    ```bash
+    ```zsh
     cd zero-to-graphql-using-phoenix
     ```
 
@@ -117,13 +115,13 @@ Note: This tutorial was updated on macOS 11.6.
 
 4.  create the database
 
-    ```bash
+    ```zsh
     mix ecto.create
     ```
 
 5.  generate contexts, schemas, and migrations for the `Person` resource
 
-    ```bash
+    ```zsh
     mix phx.gen.context Account Person people first_name:string last_name:string username:string email:string
     ```
 
@@ -161,13 +159,13 @@ Note: This tutorial was updated on macOS 11.6.
 
 7.  migrate the database
 
-    ```bash
+    ```zsh
     mix ecto.migrate
     ```
 
 8.  generate contexts, schemas, and migrations for the `Friendship` resource
 
-    ```bash
+    ```zsh
     mix phx.gen.context Account Friendship friendships person_id:references:people friend_id:references:people
     ```
 
@@ -226,7 +224,7 @@ Note: This tutorial was updated on macOS 11.6.
 
 11. migrate the database
 
-    ```bash
+    ```zsh
     mix ecto.migrate
     ```
 
@@ -372,7 +370,7 @@ Note: This tutorial was updated on macOS 11.6.
 
 16. seed the database
 
-    ```bash
+    ```zsh
     mix run priv/repo/seeds.exs
     ```
 
@@ -401,7 +399,7 @@ Note: This tutorial was updated on macOS 11.6.
 
 18. install and compile dependencies
 
-    ```bash
+    ```zsh
     mix do deps.get, deps.compile
     ```
 
@@ -502,13 +500,13 @@ Note: This tutorial was updated on macOS 11.6.
 
 23. start the server
 
-    ```bash
+    ```zsh
     mix phx.server
     ```
 
 24. navigate to our application within the browser
 
-    ```bash
+    ```zsh
     open http://localhost:4000/graphiql
     ```
 
