@@ -351,9 +351,6 @@ Note: This tutorial was updated on macOS 11.6.
       end
 
       def reset do
-        Friendship
-        |> Repo.delete_all()
-
         Person
         |> Repo.delete_all()
       end
