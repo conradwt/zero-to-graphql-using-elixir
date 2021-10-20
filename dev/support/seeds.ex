@@ -93,9 +93,6 @@ defmodule ZeroPhoenix.Seeds do
   end
 
   def reset do
-    Friendship
-    |> Repo.delete_all()
-
     Person
     |> Repo.delete_all()
   end
