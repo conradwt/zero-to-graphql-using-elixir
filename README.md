@@ -1,6 +1,6 @@
-# Zero to GraphQL Using Phoenix
+# Zero to GraphQL Using Elixir
 
-The purpose of this example is to provide details as to how one would go about using GraphQL with the Phoenix Web Framework. Thus, I have created two major sections which should be self explanatory: Quick Installation and Tutorial Installation.
+The purpose of this example is to provide details as to how one would go about using GraphQL with the Elixir Language. Thus, I have created two major sections which should be self explanatory: Quick Installation and Tutorial Installation.
 
 ## Getting Started
 
@@ -29,13 +29,13 @@ Note: This tutorial was updated on macOS 11.6.
 1.  clone this repository
 
     ```zsh
-    git clone https://github.com/conradwt/zero-to-graphql-using-phoenix.git
+    git clone https://github.com/conradwt/zero-to-graphql-using-elixir.git
     ```
 
 2.  change directory location
 
     ```zsh
-    cd zero-to-graphql-using-phoenix
+    cd zero-to-graphql-using-elixir
     ```
 
 3.  install and compile dependencies
@@ -95,7 +95,7 @@ Note: This tutorial was updated on macOS 11.6.
 1.  create the project
 
     ```zsh
-    mix phx.new zero-to-graphql-using-phoenix --app zero_phoenix --module ZeroPhoenix --no-webpack
+    mix phx.new zero-to-graphql-using-elixir --app zero_phoenix --module ZeroPhoenix --no-webpack
     ```
 
     Note: Just answer 'y' to all the prompts that appear.
@@ -103,7 +103,7 @@ Note: This tutorial was updated on macOS 11.6.
 2.  switch to the project directory
 
     ```zsh
-    cd zero-to-graphql-using-phoenix
+    cd zero-to-graphql-using-elixir
     ```
 
 3.  update `username` and `password` database credentials which appears at the bottom of the following files:
@@ -556,11 +556,11 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 Bug reports and feature requests can be filed with the rest for the Phoenix project here:
 
-- [File Bug Reports and Features](https://github.com/conradwt/zero-to-graphql-using-phoenix/issues)
+- [File Bug Reports and Features](https://github.com/conradwt/zero-to-graphql-using-elixir/issues)
 
 ## License
 
-Zero to GraphQL Using Phoenix is released under the [MIT license](./LICENSE.md).
+Zero to GraphQL Using Elixir is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
