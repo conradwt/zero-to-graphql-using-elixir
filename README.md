@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Erlang 24.1.7 or newer
 
-- Phoenix 1.5.13 or newer
+- Phoenix 1.6.2 or newer
 
 - PostgreSQL 14.0 or newer
 
@@ -376,18 +376,22 @@ Note: This tutorial was updated on macOS 11.6.1.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.5.13"},
-        {:phoenix_ecto, "~> 4.2.1"},
-        {:ecto_sql, "~> 3.6.1"},
+        {:phoenix, "~> 1.6.2"},
+        {:phoenix_ecto, "~> 4.4"},
+        {:ecto_sql, "~> 3.7.1"},
         {:postgrex, "~> 0.15.9"},
-        {:phoenix_html, "~> 2.14.3"},
-        {:phoenix_live_reload, "~> 1.3.1", only: :dev},
-        {:phoenix_live_dashboard, "~> 0.4.0"},
+        {:phoenix_html, "~> 3.0"},
+        {:phoenix_live_reload, "~> 1.3.3", only: :dev},
+        {:phoenix_live_view, "~> 0.17.5"},
+        {:floki, ">= 0.30.0", only: :test},
+        {:phoenix_live_dashboard, "~> 0.5"},
+        {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
+        {:swoosh, "~> 1.3"},
         {:telemetry_metrics, "~> 0.6.0"},
-        {:telemetry_poller, "~> 0.5.1"},
+        {:telemetry_poller, "~> 1.0"},
         {:gettext, "~> 0.18.2"},
         {:jason, "~> 1.2.2"},
-        {:plug_cowboy, "~> 2.5.0"},
+        {:plug_cowboy, "~> 2.5.2"},
         {:absinthe_plug, "~> 1.5.8"},
         {:cors_plug, "~> 2.0.3"}
       ]
