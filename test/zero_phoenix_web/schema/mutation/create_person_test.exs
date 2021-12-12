@@ -23,11 +23,11 @@ defmodule ZeroPhoenixWeb.Schema.Query.CreatePersonTest do
     """
 
     variables = %{
-        "firstName" => "Jane",
-        "lastName" => "Doe",
-        "email" => "jane@example.com",
-        "username" => "janed"
-      }
+      "firstName" => "Jane",
+      "lastName" => "Doe",
+      "email" => "jane@example.com",
+      "username" => "janed"
+    }
 
     response =
       post(
