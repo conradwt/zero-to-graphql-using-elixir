@@ -1,0 +1,29 @@
+"Represents a schema"
+schema {
+  query: RootQueryType
+}
+
+"a person"
+type Person {
+  "unique identifier for the person"
+  id: String!
+
+  "first name of a person"
+  firstName: String!
+
+  "last name of a person"
+  lastName: String!
+
+  "username of a person"
+  username: String!
+
+  "email of a person"
+  email: String!
+
+  "a list of friends for our person"
+  friends: [Person]
+}
+
+type RootQueryType {
+  person(id: ID!): Person
+}

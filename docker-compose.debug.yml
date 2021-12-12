@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  zero-to-graphql-using-phoenix:
+    image: zero-to-graphql-using-phoenix
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
