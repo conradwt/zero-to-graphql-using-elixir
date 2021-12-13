@@ -95,7 +95,11 @@ Note: This tutorial was updated on macOS 11.6.1.
 1.  create the project
 
     ```zsh
-    mix phx.new zero-to-graphql-using-elixir --app zero_phoenix --module ZeroPhoenix
+    mix phx.new zero-to-graphql-using-elixir \
+      --app zero_phoenix \
+      --module ZeroPhoenix \
+      --no-html \
+      --no-assets
     ```
 
     Note: Just answer 'y' to all the prompts that appear.
