@@ -22,11 +22,8 @@ config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "gVs0DBoIXNmzV+8/InJrlCXp6mUqNtfcoxPlSuvFkZwHK+GGqpmFoMk/XyuSe+RV",
-  watchers: [
-    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
-  ]
+  secret_key_base: "QaZRP5dUmYwCW5wZnPwlIsO+nJe0ZnXAmJmaDcBM4sQ0OAhk2K6phBprknZQr61P",
+  watchers: []
 
 # ## SSL Support
 #
@@ -51,17 +48,6 @@ config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
-
-# Watch static and templates for browser reloading.
-config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/zero_phoenix_web/(live|views)/.*(ex)$",
-      ~r"lib/zero_phoenix_web/templates/.*(eex)$"
-    ]
-  ]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
