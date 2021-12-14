@@ -5,7 +5,7 @@ defmodule ZeroPhoenixWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ZeroPhoenixWeb do
+  scope "/" do
     pipe_through :api
 
     forward "/graphql",
