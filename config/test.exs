@@ -17,7 +17,7 @@ config :zero_phoenix, ZeroPhoenix.Repo,
 # you can enable the server option below.
 config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "OD4CXADDa3JXRJbltdliVJokWhGWmdhP8el84O9pTaqTZufuXgO3FkO7F25sRocG",
+  secret_key_base: "8ry+7zZ8q3QB18RmDZ5xP/oe8nprdfMp5ht1id/FocOspw/oi0EggAilESNuG5Y0",
   server: false
 
 # In test we don't send emails.

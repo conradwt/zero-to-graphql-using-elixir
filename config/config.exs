@@ -13,9 +13,9 @@ config :zero_phoenix,
 # Configures the endpoint
 config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: ZeroPhoenixWeb.ErrorView, accepts: ~w(html json), layout: false],
+  render_errors: [view: ZeroPhoenixWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: ZeroPhoenix.PubSub,
-  live_view: [signing_salt: "mBXKCKoH"]
+  live_view: [signing_salt: "o9i216Dv"]
 
 # Configures the mailer
 #
@@ -28,16 +28,6 @@ config :zero_phoenix, ZeroPhoenix.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
-
-# Configure esbuild (the version is required)
-config :esbuild,
-  version: "0.12.18",
-  default: [
-    args:
-      ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
