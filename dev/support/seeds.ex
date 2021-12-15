@@ -10,7 +10,7 @@ defmodule ZeroPhoenix.Seeds do
     reset()
 
     #
-    # people
+    # create people
     #
 
     me =
@@ -46,7 +46,7 @@ defmodule ZeroPhoenix.Seeds do
       })
 
     #
-    # friendships
+    # create friendships
     #
 
     me
