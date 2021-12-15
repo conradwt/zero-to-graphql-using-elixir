@@ -272,7 +272,7 @@ Note: This tutorial was updated on macOS 11.6.1.
         reset()
 
         #
-        # people
+        # create people
         #
 
         me =
@@ -308,7 +308,7 @@ Note: This tutorial was updated on macOS 11.6.1.
           })
 
         #
-        # friendships
+        # create friendships
         #
 
         me
