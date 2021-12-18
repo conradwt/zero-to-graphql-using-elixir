@@ -482,19 +482,35 @@ Note: This tutorial was updated on macOS 11.6.2.
     end
     ```
 
-22. add route for mounting the GraphiQL browser endpoint:
+22. add routes for our GraphQL API and GraphiQL browser endpoints:
 
     `lib/zero_phoenix_web/router.ex`:
 
+    replace
+
     ```elixir
-    scope "/graphiql" do
+    scope "/api", ZeroPhoenixWeb do
+      pipe_through :api
+    end
+    ```
+
+    with
+
+    ```
+    scope "/" do
       pipe_through :api
 
-      forward "/",
-              Absinthe.Plug.GraphiQL,
-              schema: ZeroPhoenixWeb.Graphql.Schema,
-              json_codec: Jason,
-              interface: :playground
+      if Mix.env() in [:dev, :test] do
+        forward "/graphiql",
+          Absinthe.Plug.GraphiQL,
+          schema: ZeroPhoenixWeb.Graphql.Schema,
+          json_codec: Jason,
+          interface: :playground
+      end
+
+      forward "/graphql",
+        Absinthe.Plug,
+        schema: ZeroPhoenixWeb.Graphql.Schema
     end
     ```
 
