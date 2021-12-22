@@ -425,21 +425,25 @@ Note: This tutorial was updated on macOS 11.6.2.
     defmodule ZeroPhoenixWeb.Graphql.Schema do
       use Absinthe.Schema
 
-      import_types ZeroPhoenix.Graphql.Types.Person
+      import_types(ZeroPhoenixWeb.Graphql.Types.Person)
 
-      alias ZeroPhoenix.Repo
+      alias ZeroPhoenix.Account.Person
+      alias ZeroPhoenix.Account
 
       query do
         field :person, type: :person do
-          arg :id, non_null(:id)
-          resolve fn %{id: id}, _info ->
-            case ZeroPhoenix.Person|> Repo.get(id) do
-              nil  -> {:error, "Person id #{id} not found"}
-              person -> {:ok, person}
+          arg(:id, non_null(:id))
+
+          resolve(fn %{id: id}, _info ->
+            case Account.get_person(id) do
+              %Person{} = person ->
+                {:ok, person}
+
+              _error ->
+                {:error, "Person id #{id} not found"}
             end
-          end
+          end)
         end
-      end
     end
     ```
 
