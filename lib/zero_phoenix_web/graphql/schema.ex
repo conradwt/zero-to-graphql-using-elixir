@@ -3,7 +3,6 @@ defmodule ZeroPhoenixWeb.Graphql.Schema do
 
   import_types(ZeroPhoenixWeb.Graphql.Types.Person)
 
-  alias ZeroPhoenix.Repo
   alias ZeroPhoenix.Account.Person
   alias ZeroPhoenix.Account
 
@@ -12,9 +11,12 @@ defmodule ZeroPhoenixWeb.Graphql.Schema do
       arg(:id, non_null(:id))
 
       resolve(fn %{id: id}, _info ->
-        case Person |> Repo.get(id) do
-          person -> {:ok, person}
-          nil -> {:error, "Person id #{id} not found"}
+        case Account.get_person(id) do
+          %Person{} = person ->
+            {:ok, person}
+
+          _error ->
+            {:error, "Person id #{id} not found"}
         end
       end)
     end
