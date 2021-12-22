@@ -434,8 +434,8 @@ Note: This tutorial was updated on macOS 11.6.2.
           arg :id, non_null(:id)
           resolve fn %{id: id}, _info ->
             case ZeroPhoenix.Person|> Repo.get(id) do
-              nil  -> {:error, "Person id #{id} not found"}
               person -> {:ok, person}
+              nil  -> {:error, "Person id #{id} not found"}
             end
           end
         end
