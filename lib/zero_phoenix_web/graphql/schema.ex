@@ -1,10 +1,11 @@
 defmodule ZeroPhoenixWeb.Graphql.Schema do
   use Absinthe.Schema
 
-  import_types(ZeroPhoenixWeb.Graphql.Types.Person)
+  import_types(ZeroPhoenixWeb.Graphql.Types.{Person, PersonInput})
 
   alias ZeroPhoenix.Account.Person
   alias ZeroPhoenix.Account
+  alias ZeroPhoenixWeb.Graphql.Resolvers
 
   query do
     field :person, type: :person do
@@ -27,6 +28,14 @@ defmodule ZeroPhoenixWeb.Graphql.Schema do
       resolve(fn %{ids: ids}, _info ->
         {:ok, Account.get_people(ids)}
       end)
+    end
+  end
+
+  mutation do
+    field :create_person, type: :person do
+      arg :input, non_null(:person_input)
+
+      resolve &Resolvers.Person.create_person/3
     end
   end
 end
