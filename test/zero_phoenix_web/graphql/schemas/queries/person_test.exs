@@ -1,7 +1,7 @@
 defmodule ZeroPhoenixWeb.Graphql.Schemas.Queries.PersonTest do
   use ZeroPhoenixWeb.ConnCase, async: true
 
-  import Ecto.Query, only: [first: 1]
+  import Ecto.Query
 
   alias ZeroPhoenix.Account.Person
   alias ZeroPhoenix.Repo
