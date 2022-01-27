@@ -1,4 +1,4 @@
-defmodule ZeroPhoenixWeb.Schema.Query.PersonTest do
+defmodule ZeroPhoenixWeb.Graphql.Schemas.Queries.PersonTest do
   use ZeroPhoenixWeb.ConnCase, async: true
 
   import Ecto.Query, only: [first: 1]

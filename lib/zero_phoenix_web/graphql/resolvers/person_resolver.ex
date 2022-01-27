@@ -1,5 +1,6 @@
 defmodule ZeroPhoenixWeb.Graphql.Resolvers.PersonResolver do
   alias ZeroPhoenix.Account
+  alias ZeroPhoenix.Account.Person
 
   def find(_parent, %{id: id}, _info) do
     case Account.get_person(id) do
