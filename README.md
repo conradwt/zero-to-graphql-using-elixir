@@ -10,11 +10,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Erlang 24.2 or newer
 
-- Phoenix 1.6.4 or newer
+- Phoenix 1.6.6 or newer
 
 - PostgreSQL 14.1 or newer
 
-Note: This tutorial was updated on macOS 11.6.2.
+Note: This tutorial was updated on macOS 11.6.3.
 
 ## Communication
 
