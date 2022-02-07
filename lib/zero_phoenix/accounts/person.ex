@@ -3,8 +3,8 @@ defmodule ZeroPhoenix.Accounts.Person do
 
   import Ecto.Changeset
 
-  alias ZeroPhoenix.Accounts.Person
   alias ZeroPhoenix.Accounts.Friendship
+  alias ZeroPhoenix.Accounts.Person
 
   schema "people" do
     field :email, :string
