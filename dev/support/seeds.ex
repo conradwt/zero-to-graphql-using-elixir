@@ -1,5 +1,5 @@
 defmodule ZeroPhoenix.Seeds do
-  alias ZeroPhoenix.Account.{Person, Friendship}
+  alias ZeroPhoenix.Accounts.{Person, Friendship}
   alias ZeroPhoenix.Repo
 
   def run() do

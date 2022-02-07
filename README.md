@@ -126,7 +126,7 @@ Note: This tutorial was updated on macOS 11.6.2.
 5.  generate contexts, schemas, and migrations for the `Person` resource
 
     ```zsh
-    mix phx.gen.context Account Person people first_name:string last_name:string username:string email:string
+    mix phx.gen.context Accounts Person people first_name:string last_name:string username:string email:string
     ```
 
 6.  replace the generated `Person` schema with the following:
@@ -134,11 +134,13 @@ Note: This tutorial was updated on macOS 11.6.2.
     `lib/zero_phoenix/account/person.ex`:
 
     ```elixir
-    defmodule ZeroPhoenix.Account.Person do
+    defmodule ZeroPhoenix.Accounts.Person do
       use Ecto.Schema
+
       import Ecto.Changeset
-      alias ZeroPhoenix.Account.Person
-      alias ZeroPhoenix.Account.Friendship
+
+      alias ZeroPhoenix.Accounts.Person
+      alias ZeroPhoenix.Accounts.Friendship
 
       schema "people" do
         field(:email, :string)
@@ -170,7 +172,7 @@ Note: This tutorial was updated on macOS 11.6.2.
 8.  generate contexts, schemas, and migrations for the `Friendship` resource
 
     ```zsh
-    mix phx.gen.context Account Friendship friendships person_id:references:people friend_id:references:people
+    mix phx.gen.context Accounts Friendship friendships person_id:references:people friend_id:references:people
     ```
 
 9.  replace the generated `CreateFriendship` migration with the following:
@@ -197,14 +199,16 @@ Note: This tutorial was updated on macOS 11.6.2.
 
 10. replace the generated `Friendship` schema with the following:
 
-    `lib/zero_phoenix/account/friendship.ex`:
+    `lib/zero_phoenix/accounts/friendship.ex`:
 
     ```elixir
-    defmodule ZeroPhoenix.Account.Friendship do
+    defmodule ZeroPhoenix.Accounts.Friendship do
       use Ecto.Schema
+
       import Ecto.Changeset
-      alias ZeroPhoenix.Account.Person
-      alias ZeroPhoenix.Account.Friendship
+
+      alias ZeroPhoenix.Accounts.Person
+      alias ZeroPhoenix.Accounts.Friendship
 
       @required_fields [:person_id, :friend_id]
 
@@ -261,7 +265,7 @@ Note: This tutorial was updated on macOS 11.6.2.
 
     ```zsh
     defmodule ZeroPhoenix.Seeds do
-      alias ZeroPhoenix.Account.{Person, Friendship}
+      alias ZeroPhoenix.Accounts.{Person, Friendship}
       alias ZeroPhoenix.Repo
 
       def run() do
@@ -375,12 +379,14 @@ Note: This tutorial was updated on macOS 11.6.2.
     mix run priv/repo/seeds.exs
     ```
 
-17. add `absinthe_plug` package to your `mix.exs` dependencies as follows:
+17. add `absinthe_plug` and `ataloader` hex package dependencies as follows:
+
+    `mix.exs`:
 
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.6.4"},
+        {:phoenix, "~> 1.6.6"},
         {:phoenix_ecto, "~> 4.4"},
         {:ecto_sql, "~> 3.7.1"},
         {:postgrex, "~> 0.15.9"},
@@ -392,7 +398,8 @@ Note: This tutorial was updated on macOS 11.6.2.
         {:jason, "~> 1.2.2"},
         {:plug_cowboy, "~> 2.5.2"},
         {:absinthe_plug, "~> 1.5.8"},
-        {:cors_plug, "~> 2.0.3"}
+        {:cors_plug, "~> 2.0.3"},
+        {:dataloader, "~> 1.0.10"}
       ]
     end
     ```
@@ -417,7 +424,13 @@ Note: This tutorial was updated on macOS 11.6.2.
     plug(ZeroPhoenixWeb.Router)
     ```
 
-20. add the GraphQL schema which represents our entry point into our GraphQL structure:
+20. create the GraphQL directory structure
+
+    ```zsh
+    mkdir -p lib/zero_phoenix_web/graphql/{resolvers,schemas/{queries,mutations},types}
+    ```
+
+21. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
@@ -427,27 +440,15 @@ Note: This tutorial was updated on macOS 11.6.2.
 
       import_types(ZeroPhoenixWeb.Graphql.Types.Person)
 
-      alias ZeroPhoenix.Account.Person
-      alias ZeroPhoenix.Account
+      import_types(ZeroPhoenixWeb.Graphql.Schemas.Queries.Person)
 
       query do
-        field :person, type: :person do
-          arg(:id, non_null(:id))
-
-          resolve(fn %{id: id}, _info ->
-            case Account.get_person(id) do
-              %Person{} = person ->
-                {:ok, person}
-
-              _error ->
-                {:error, "Person id #{id} not found"}
-            end
-          end)
-        end
+        import_fields(:person_queries)
+      end
     end
     ```
 
-21. add our Person type which will be performing queries against:
+22. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -486,7 +487,46 @@ Note: This tutorial was updated on macOS 11.6.2.
     end
     ```
 
-22. add routes for our GraphQL API and GraphiQL browser endpoints:
+23. add the `person_queries` object to contain all the queries for a person:
+
+    `lib/zero_phoenix_web/graphql/schemas/queries/person.ex`:
+
+    ```elixir
+    defmodule ZeroPhoenixWeb.Graphql.Schemas.Queries.Person do
+      use Absinthe.Schema.Notation
+
+      object :person_queries do
+        field :person, type: :person do
+          arg :id, non_null(:id)
+
+          resolve(&ZeroPhoenixWeb.Graphql.Resolvers.PersonResolver.find/3)
+        end
+      end
+    end
+    ```
+
+24. add the `PersonResolver` to fetch the individual fields of our person object:
+
+    `lib/zero_phoenix_web/graphql/resolvers/person_resolver.ex`:
+
+    ```elixir
+    defmodule ZeroPhoenixWeb.Graphql.Resolvers.PersonResolver do
+      alias ZeroPhoenix.Accounts
+      alias ZeroPhoenix.Accounts.Person
+
+      def find(_parent, %{id: id}, _info) do
+        case Accounts.get_person(id) do
+          %Person{} = person ->
+            {:ok, person}
+
+          _error ->
+            {:error, "Person id #{id} not found"}
+        end
+      end
+    end
+    ```
+
+25. add routes for our GraphQL API and GraphiQL browser endpoints:
 
     `lib/zero_phoenix_web/router.ex`:
 
@@ -518,19 +558,19 @@ Note: This tutorial was updated on macOS 11.6.2.
     end
     ```
 
-23. start the server
+26. start the server
 
     ```zsh
     mix phx.server
     ```
 
-24. navigate to our application within the browser
+27. navigate to our application within the browser
 
     ```zsh
     open http://localhost:4000/graphiql
     ```
 
-25. enter the below GraphQL query on the left side of the browser window
+28. enter the below GraphQL query on the left side of the browser window
 
     ```graphql
     {
@@ -549,7 +589,7 @@ Note: This tutorial was updated on macOS 11.6.2.
     }
     ```
 
-26. run the GraphQL query
+29. run the GraphQL query
 
     ```text
     Control + Enter

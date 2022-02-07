@@ -3,7 +3,7 @@ defmodule ZeroPhoenixWeb.Graphql.Schemas.Queries.PersonTest do
 
   import Ecto.Query
 
-  alias ZeroPhoenix.Account.Person
+  alias ZeroPhoenix.Accounts.Person
   alias ZeroPhoenix.Repo
 
   setup do

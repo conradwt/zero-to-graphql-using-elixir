@@ -1,8 +1,10 @@
-defmodule ZeroPhoenix.Account.Friendship do
+defmodule ZeroPhoenix.Accounts.Friendship do
   use Ecto.Schema
+
   import Ecto.Changeset
-  alias ZeroPhoenix.Account.Person
-  alias ZeroPhoenix.Account.Friendship
+
+  alias ZeroPhoenix.Accounts.Person
+  alias ZeroPhoenix.Accounts.Friendship
 
   @required_fields [:person_id, :friend_id]
 

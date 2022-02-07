@@ -1,12 +1,12 @@
-defmodule ZeroPhoenix.Account do
+defmodule ZeroPhoenix.Accounts do
   @moduledoc """
-  The Account context.
+  The Accounts context.
   """
 
   import Ecto.Query, warn: false
-  alias ZeroPhoenix.Repo
 
-  alias ZeroPhoenix.Account.Person
+  alias ZeroPhoenix.Repo
+  alias ZeroPhoenix.Accounts.Person
 
   @doc """
   Returns the list of people.

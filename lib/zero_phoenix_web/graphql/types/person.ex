@@ -1,9 +1,9 @@
 defmodule ZeroPhoenixWeb.Graphql.Types.Person do
   use Absinthe.Schema.Notation
 
-  import Ecto
+  import Absinthe.Resolution.Helpers, only: [dataloader: 1, dataloader: 3]
 
-  alias ZeroPhoenix.Repo
+  alias ZeroPhoenix.Accounts
 
   @desc "a person"
   object :person do
@@ -23,11 +23,7 @@ defmodule ZeroPhoenixWeb.Graphql.Types.Person do
     field(:email, non_null(:string))
 
     @desc "a list of friends for our person"
-    field :friends, list_of(:person) do
-      resolve(fn _, %{source: person} ->
-        {:ok, Repo.all(assoc(person, :friends))}
-      end)
-    end
+    field :friends, list_of(:person), resolve: dataloader(Accounts)
   end
 
   @desc "a person input"
@@ -43,5 +39,19 @@ defmodule ZeroPhoenixWeb.Graphql.Types.Person do
 
     @desc "email of a person"
     field(:email, non_null(:string))
+  end
+
+  def context(ctx) do
+    source = Dataloader.Ecto.new(ZeroPhoenix.Repo)
+
+    loader =
+      Dataloader.new
+      |> Dataloader.add_source(Accounts, source)
+
+    Map.put(ctx, :loader, loader)
+  end
+
+  def plugins do
+    [Absinthe.Middleware.Dataloader] ++ Absinthe.Plugin.defaults()
   end
 end

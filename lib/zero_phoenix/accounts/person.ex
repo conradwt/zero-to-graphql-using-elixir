@@ -1,8 +1,10 @@
-defmodule ZeroPhoenix.Account.Person do
+defmodule ZeroPhoenix.Accounts.Person do
   use Ecto.Schema
+
   import Ecto.Changeset
-  alias ZeroPhoenix.Account.Person
-  alias ZeroPhoenix.Account.Friendship
+
+  alias ZeroPhoenix.Accounts.Person
+  alias ZeroPhoenix.Accounts.Friendship
 
   schema "people" do
     field(:email, :string)
