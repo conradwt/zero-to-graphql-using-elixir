@@ -143,13 +143,13 @@ Note: This tutorial was updated on macOS 11.6.2.
       alias ZeroPhoenix.Accounts.Friendship
 
       schema "people" do
-        field(:email, :string)
-        field(:first_name, :string)
-        field(:last_name, :string)
-        field(:username, :string)
+        field :email, :string
+        field :first_name, :string
+        field :last_name, :string
+        field :username, :string
 
-        has_many(:friendships, Friendship)
-        has_many(:friends, through: [:friendships, :friend])
+        has_many :friendships, Friendship
+        has_many :friends, through: [:friendships, :friend]
 
         timestamps()
       end
@@ -213,8 +213,8 @@ Note: This tutorial was updated on macOS 11.6.2.
       @required_fields [:person_id, :friend_id]
 
       schema "friendships" do
-        belongs_to(:person, Person)
-        belongs_to(:friend, Person)
+        belongs_to :person, Person
+        belongs_to :friend, Person
 
         timestamps()
       end
