@@ -12,7 +12,7 @@ defmodule ZeroPhoenixWeb.Graphql.Resolvers.PersonResolver do
     end
   end
 
-  def list(_parent,%{ids: ids}, _info) do
+  def list(_parent, %{ids: ids}, _info) do
      {:ok, Accounts.get_people(ids)}
   end
 

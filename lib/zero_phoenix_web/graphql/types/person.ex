@@ -42,11 +42,9 @@ defmodule ZeroPhoenixWeb.Graphql.Types.Person do
   end
 
   def context(ctx) do
-    source = Dataloader.Ecto.new(ZeroPhoenix.Repo)
-
     loader =
       Dataloader.new
-      |> Dataloader.add_source(Accounts, source)
+      |> Dataloader.add_source(Accounts, Accounts.datasource())
 
     Map.put(ctx, :loader, loader)
   end
