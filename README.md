@@ -139,8 +139,8 @@ Note: This tutorial was updated on macOS 11.6.2.
 
       import Ecto.Changeset
 
-      alias ZeroPhoenix.Accounts.Person
       alias ZeroPhoenix.Accounts.Friendship
+      alias ZeroPhoenix.Accounts.Person
 
       schema "people" do
         field :email, :string
