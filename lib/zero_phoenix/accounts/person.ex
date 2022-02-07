@@ -12,8 +12,8 @@ defmodule ZeroPhoenix.Accounts.Person do
     field(:last_name, :string)
     field(:username, :string)
 
-    has_many(:friendships, Friendship)
-    has_many(:friends, through: [:friendships, :friend])
+    has_many :friendships, Friendship
+    has_many :friends, through: [:friendships, :friend]
 
     timestamps()
   end
