@@ -1,4 +1,4 @@
-defmodule ZeroPhoenixWeb.Graphql.Resolvers.PersonResolver do
+defmodule ZeroPhoenixWeb.GraphQL.Resolvers.PersonResolver do
   import Ecto
 
   alias ZeroPhoenix.Accounts
