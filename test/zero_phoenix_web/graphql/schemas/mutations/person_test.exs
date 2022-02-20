@@ -1,4 +1,4 @@
-defmodule ZeroPhoenixWeb.Graphql.Schemas.Mutations.PersonTest do
+defmodule ZeroPhoenixWeb.GraphQL.Schemas.Mutations.PersonTest do
   use ZeroPhoenixWeb.ConnCase, async: true
 
   test "create person" do

@@ -1,15 +1,15 @@
-defmodule ZeroPhoenixWeb.Graphql.Schema do
+defmodule ZeroPhoenixWeb.GraphQL.Schema do
   use Absinthe.Schema
 
-  import_types(ZeroPhoenixWeb.Graphql.Types.Person)
+  import_types(ZeroPhoenixWeb.GraphQL.Types.Person)
 
-  import_types(ZeroPhoenixWeb.Graphql.Schemas.Queries.Person)
+  import_types(ZeroPhoenixWeb.GraphQL.Schemas.Queries.Person)
 
   query do
     import_fields(:person_queries)
   end
 
-  import_types(ZeroPhoenixWeb.Graphql.Schemas.Mutations.Person)
+  import_types(ZeroPhoenixWeb.GraphQL.Schemas.Mutations.Person)
 
   mutation do
     import_fields(:person_mutations)

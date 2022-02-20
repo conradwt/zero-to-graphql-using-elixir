@@ -11,14 +11,14 @@ defmodule ZeroPhoenixWeb.Router do
     if Mix.env() in [:dev, :test] do
       forward "/graphiql",
         Absinthe.Plug.GraphiQL,
-        schema: ZeroPhoenixWeb.Graphql.Schema,
+        schema: ZeroPhoenixWeb.GraphQL.Schema,
         json_codec: Jason,
         interface: :playground
     end
 
     forward "/graphql",
       Absinthe.Plug,
-      schema: ZeroPhoenixWeb.Graphql.Schema
+      schema: ZeroPhoenixWeb.GraphQL.Schema
   end
 
   # Enables LiveDashboard only for development

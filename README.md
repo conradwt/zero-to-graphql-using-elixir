@@ -435,12 +435,12 @@ Note: This tutorial was updated on macOS 11.6.3.
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
     ```elixir
-    defmodule ZeroPhoenixWeb.Graphql.Schema do
+    defmodule ZeroPhoenixWeb.GraphQL.Schema do
       use Absinthe.Schema
 
-      import_types(ZeroPhoenixWeb.Graphql.Types.Person)
+      import_types(ZeroPhoenixWeb.GraphQL.Types.Person)
 
-      import_types(ZeroPhoenixWeb.Graphql.Schemas.Queries.Person)
+      import_types(ZeroPhoenixWeb.GraphQL.Schemas.Queries.Person)
 
       query do
         import_fields(:person_queries)
@@ -453,7 +453,7 @@ Note: This tutorial was updated on macOS 11.6.3.
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
     ```elixir
-    defmodule ZeroPhoenixWeb.Graphql.Types.Person do
+    defmodule ZeroPhoenixWeb.GraphQL.Types.Person do
       use Absinthe.Schema.Notation
 
       import Ecto
@@ -492,14 +492,14 @@ Note: This tutorial was updated on macOS 11.6.3.
     `lib/zero_phoenix_web/graphql/schemas/queries/person.ex`:
 
     ```elixir
-    defmodule ZeroPhoenixWeb.Graphql.Schemas.Queries.Person do
+    defmodule ZeroPhoenixWeb.GraphQL.Schemas.Queries.Person do
       use Absinthe.Schema.Notation
 
       object :person_queries do
         field :person, type: :person do
           arg :id, non_null(:id)
 
-          resolve(&ZeroPhoenixWeb.Graphql.Resolvers.PersonResolver.find/3)
+          resolve(&ZeroPhoenixWeb.GraphQL.Resolvers.PersonResolver.find/3)
         end
       end
     end
@@ -510,7 +510,7 @@ Note: This tutorial was updated on macOS 11.6.3.
     `lib/zero_phoenix_web/graphql/resolvers/person_resolver.ex`:
 
     ```elixir
-    defmodule ZeroPhoenixWeb.Graphql.Resolvers.PersonResolver do
+    defmodule ZeroPhoenixWeb.GraphQL.Resolvers.PersonResolver do
       alias ZeroPhoenix.Accounts
       alias ZeroPhoenix.Accounts.Person
 
@@ -547,14 +547,14 @@ Note: This tutorial was updated on macOS 11.6.3.
       if Mix.env() in [:dev, :test] do
         forward "/graphiql",
           Absinthe.Plug.GraphiQL,
-          schema: ZeroPhoenixWeb.Graphql.Schema,
+          schema: ZeroPhoenixWeb.GraphQL.Schema,
           json_codec: Jason,
           interface: :playground
       end
 
       forward "/graphql",
         Absinthe.Plug,
-        schema: ZeroPhoenixWeb.Graphql.Schema
+        schema: ZeroPhoenixWeb.GraphQL.Schema
     end
     ```
 
