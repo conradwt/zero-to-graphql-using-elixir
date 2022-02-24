@@ -179,7 +179,7 @@ Note: This tutorial was updated on macOS 11.6.3.
 
     `priv/repo/migrations/<some datetime>_create_friendship.exs`:
 
-    ```zsh
+    ```elixir
     defmodule ZeroPhoenix.Repo.Migrations.CreateFriendship do
       use Ecto.Migration
 
@@ -541,7 +541,7 @@ Note: This tutorial was updated on macOS 11.6.3.
 
     with
 
-    ```
+    ```elixir
     scope "/" do
       pipe_through :api
 
