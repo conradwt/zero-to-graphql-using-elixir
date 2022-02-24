@@ -16,7 +16,7 @@ defmodule ZeroPhoenixWeb.Router do
         interface: :playground
     end
 
-    forward "/graphql",
+    forward "/api",
       Absinthe.Plug,
       schema: ZeroPhoenixWeb.GraphQL.Schema
   end

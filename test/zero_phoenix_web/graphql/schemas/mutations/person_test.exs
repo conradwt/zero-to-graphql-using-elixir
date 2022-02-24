@@ -23,7 +23,7 @@ defmodule ZeroPhoenixWeb.GraphQL.Schemas.Mutations.PersonTest do
     response =
       post(
         build_conn(),
-        "/graphql",
+        "/api",
         query: query,
         variables: %{"person" => person}
       )

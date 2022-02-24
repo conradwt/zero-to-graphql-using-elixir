@@ -27,7 +27,7 @@ defmodule ZeroPhoenixWeb.GraphQL.Schemas.Queries.PersonTest do
     response =
       post(
         build_conn(),
-        "/graphql",
+        "/api",
         query: query,
         variables: %{"personId" => person.id}
       )
@@ -62,7 +62,7 @@ defmodule ZeroPhoenixWeb.GraphQL.Schemas.Queries.PersonTest do
     response =
       post(
         build_conn(),
-        "/graphql",
+        "/api",
         query: query,
         variables: %{"ids" => people_ids}
       )
@@ -96,7 +96,7 @@ defmodule ZeroPhoenixWeb.GraphQL.Schemas.Queries.PersonTest do
     response =
       post(
         build_conn(),
-        "/graphql",
+        "/api",
         query: query
       )
 

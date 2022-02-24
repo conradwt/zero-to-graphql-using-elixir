@@ -552,7 +552,7 @@ Note: This tutorial was updated on macOS 11.6.3.
           interface: :playground
       end
 
-      forward "/graphql",
+      forward "/api",
         Absinthe.Plug,
         schema: ZeroPhoenixWeb.GraphQL.Schema
     end
