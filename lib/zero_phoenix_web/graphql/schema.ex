@@ -2,7 +2,7 @@ defmodule ZeroPhoenixWeb.GraphQL.Schema do
   use Absinthe.Schema
 
   import_types(ZeroPhoenixWeb.GraphQL.Types.Person)
-
+  
   import_types(ZeroPhoenixWeb.GraphQL.Schemas.Queries.Person)
 
   query do
