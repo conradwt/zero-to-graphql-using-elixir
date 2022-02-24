@@ -1,13 +1,44 @@
-defmodule ZeroPhoenixWeb.Schema.Query.PeopleTest do
+defmodule ZeroPhoenixWeb.GraphQL.Schemas.Queries.PersonTest do
   use ZeroPhoenixWeb.ConnCase, async: true
 
   import Ecto.Query
 
-  alias ZeroPhoenix.Account.Person
+  alias ZeroPhoenix.Accounts.Person
   alias ZeroPhoenix.Repo
 
   setup do
     ZeroPhoenix.Seeds.run()
+  end
+
+  test "get person by ID" do
+    query = """
+      query GetPerson($personId: ID!) {
+        person(id: $personId) {
+          email
+        }
+      }
+    """
+
+    person =
+      Person
+      |> first()
+      |> Repo.one()
+
+    response =
+      post(
+        build_conn(),
+        "/api",
+        query: query,
+        variables: %{"personId" => person.id}
+      )
+
+    assert json_response(response, 200) == %{
+      "data" => %{
+        "person" => %{
+          "email" => "conradwt@gmail.com"
+        }
+      }
+    }
   end
 
   test "get people by IDs" do
@@ -31,7 +62,7 @@ defmodule ZeroPhoenixWeb.Schema.Query.PeopleTest do
     response =
       post(
         build_conn(),
-        "/graphql",
+        "/api",
         query: query,
         variables: %{"ids" => people_ids}
       )
@@ -65,7 +96,7 @@ defmodule ZeroPhoenixWeb.Schema.Query.PeopleTest do
     response =
       post(
         build_conn(),
-        "/graphql",
+        "/api",
         query: query
       )
 

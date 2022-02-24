@@ -5,7 +5,7 @@ defmodule ZeroPhoenix.Mixfile do
     [
       app: :zero_phoenix,
       version: "3.3.4",
-      elixir: "~> 1.13.2",
+      elixir: "~> 1.13.3",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -45,6 +45,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:gettext, "~> 0.18.2"},
       {:jason, "~> 1.2.2"},
       {:plug_cowboy, "~> 2.5.2"},
+      {:absinthe, "~> 1.7.0"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 2.0.3"}
     ]

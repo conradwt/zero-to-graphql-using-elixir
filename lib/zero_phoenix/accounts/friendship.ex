@@ -1,14 +1,16 @@
-defmodule ZeroPhoenix.Account.Friendship do
+defmodule ZeroPhoenix.Accounts.Friendship do
   use Ecto.Schema
+
   import Ecto.Changeset
-  alias ZeroPhoenix.Account.Person
-  alias ZeroPhoenix.Account.Friendship
+
+  alias ZeroPhoenix.Accounts.Friendship
+  alias ZeroPhoenix.Accounts.Person
 
   @required_fields [:person_id, :friend_id]
 
   schema "friendships" do
-    belongs_to(:person, Person)
-    belongs_to(:friend, Person)
+    belongs_to :person, Person
+    belongs_to :friend, Person
 
     timestamps()
   end
