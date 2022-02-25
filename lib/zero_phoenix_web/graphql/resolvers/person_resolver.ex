@@ -1,9 +1,6 @@
 defmodule ZeroPhoenixWeb.GraphQL.Resolvers.PersonResolver do
-  import Ecto
-
   alias ZeroPhoenix.Accounts
   alias ZeroPhoenix.Accounts.Person
-  alias ZeroPhoenix.Repo
 
   def find(_parent, %{id: id}, _resolution) do
     case Accounts.get_person(id) do
@@ -27,9 +24,5 @@ defmodule ZeroPhoenixWeb.GraphQL.Resolvers.PersonResolver do
       {:error, _} ->
         {:error, "Could not create person"}
     end
-  end
-
-  def friends(parent, _args, _resolution) do
-    {:ok, Repo.all(assoc(parent, :friends))}
   end
 end

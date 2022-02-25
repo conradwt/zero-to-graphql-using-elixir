@@ -124,4 +124,14 @@ defmodule ZeroPhoenix.Accounts do
   def change_person(%Person{} = person) do
     Person.changeset(person, %{})
   end
+
+  # Dataloader
+
+  def datasource() do
+    Dataloader.Ecto.new(Repo, query: &query/2)
+  end
+
+  def query(queryable, _) do
+    queryable
+  end
 end
