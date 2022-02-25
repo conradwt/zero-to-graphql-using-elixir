@@ -30,9 +30,9 @@ loader =
 
 loader = loader |> Dataloader.run
 
-# 🔥 This runs one Ecto query to fetch all the bookings for all the places!
+# 🔥 This runs one Ecto query to fetch all the friends for all the people!
 
-# Now you can get the bookings for a particular place:
+# Now you can get the friends for a particular person:
 
 loader |> Dataloader.load(Accounts, :friends, person1) |> IO.inspect
 loader |> Dataloader.load(Accounts, :friends, person2) |> IO.inspect

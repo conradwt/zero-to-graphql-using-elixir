@@ -22,6 +22,28 @@ defmodule ZeroPhoenix.Accounts do
   end
 
   @doc """
+  Returns a list of people matching the given `criteria`.
+
+  Example Criteria:
+
+  [{:limit, 15}, {:order, :asc}]
+  """
+
+  def list_people(criteria) do
+    query = from p in Person
+
+    Enum.reduce(criteria, query, fn
+      {:limit, limit}, query ->
+        from p in query, limit: ^limit
+
+      {:order, order}, query ->
+        from p in query, order_by: [{^order, :id}]
+    end)
+    |> Repo.all
+  end
+
+
+  @doc """
   Gets a single person.
 
   Raises `Ecto.NoResultsError` if the Person does not exist.
