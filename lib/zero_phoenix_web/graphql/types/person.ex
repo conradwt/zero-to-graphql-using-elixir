@@ -1,7 +1,9 @@
-defmodule ZeroPhoenixWeb.Graphql.Types.Person do
+defmodule ZeroPhoenixWeb.GraphQL.Types.Person do
   use Absinthe.Schema.Notation
 
-  alias ZeroPhoenixWeb.Graphql.Resolvers
+  import Absinthe.Resolution.Helpers, only: [dataloader: 1]
+
+  alias ZeroPhoenix.Accounts
 
   @desc "a person"
   object :person do
@@ -21,9 +23,7 @@ defmodule ZeroPhoenixWeb.Graphql.Types.Person do
     field(:email, non_null(:string))
 
     @desc "a list of friends for our person"
-    field :friends, list_of(:person) do
-      resolve &Resolvers.PersonResolver.friends/3
-    end
+    field :friends, list_of(:person), resolve: dataloader(Accounts)
   end
 
   @desc "a person input"

@@ -443,13 +443,44 @@ Note: This tutorial was updated on macOS 12.2.1.
 
       import_types(ZeroPhoenixWeb.GraphQL.Schemas.Queries.Person)
 
+      alias ZeroPhoenix.Accounts
+      alias ZeroPhoenix.Repo
+
       query do
         import_fields(:person_queries)
+      end
+
+      def context(ctx) do
+        loader =
+          Dataloader.new
+          |> Dataloader.add_source(Accounts, Accounts.datasource())
+
+        Map.put(ctx, :loader, loader)
+      end
+
+      def plugins do
+        [Absinthe.Middleware.Dataloader] ++ Absinthe.Plugin.defaults()
       end
     end
     ```
 
-22. add our Person type which will be performing queries against:
+22. update the `Accounts` context by adding the following after the `change_person` function:
+
+    `lib/zero_phoenix/accounts.ex`:
+
+    ```elixir
+    # Dataloader
+
+    def datasource() do
+      Dataloader.Ecto.new(Repo, query: &query/2)
+    end
+
+    def query(queryable, _) do
+      queryable
+    end
+    ```
+
+23. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -457,38 +488,34 @@ Note: This tutorial was updated on macOS 12.2.1.
     defmodule ZeroPhoenixWeb.GraphQL.Types.Person do
       use Absinthe.Schema.Notation
 
-      import Ecto
+      import Absinthe.Resolution.Helpers, only: [dataloader: 1]
 
-      alias ZeroPhoenix.Repo
+      alias ZeroPhoenix.Accounts
 
       @desc "a person"
       object :person do
         @desc "unique identifier for the person"
-        field :id, non_null(:string)
+        field(:id, non_null(:string))
 
         @desc "first name of a person"
-        field :first_name, non_null(:string)
+        field(:first_name, non_null(:string))
 
         @desc "last name of a person"
-        field :last_name, non_null(:string)
+        field(:last_name, non_null(:string))
 
         @desc "username of a person"
-        field :username, non_null(:string)
+        field(:username, non_null(:string))
 
         @desc "email of a person"
-        field :email, non_null(:string)
+        field(:email, non_null(:string))
 
         @desc "a list of friends for our person"
-        field :friends, list_of(:person) do
-          resolve fn _, %{source: person} ->
-            {:ok, Repo.all(assoc(person, :friends))}
-          end
-        end
+        field :friends, list_of(:person), resolve: dataloader(Accounts)
       end
     end
     ```
 
-23. add the `person_queries` object to contain all the queries for a person:
+24. add the `person_queries` object to contain all the queries for a person:
 
     `lib/zero_phoenix_web/graphql/schemas/queries/person.ex`:
 
@@ -506,7 +533,7 @@ Note: This tutorial was updated on macOS 12.2.1.
     end
     ```
 
-24. add the `PersonResolver` to fetch the individual fields of our person object:
+25. add the `PersonResolver` to fetch the individual fields of our person object:
 
     `lib/zero_phoenix_web/graphql/resolvers/person_resolver.ex`:
 
@@ -515,7 +542,7 @@ Note: This tutorial was updated on macOS 12.2.1.
       alias ZeroPhoenix.Accounts
       alias ZeroPhoenix.Accounts.Person
 
-      def find(_parent, %{id: id}, _info) do
+      def find(_parent, %{id: id}, _resolution) do
         case Accounts.get_person(id) do
           %Person{} = person ->
             {:ok, person}
@@ -527,7 +554,7 @@ Note: This tutorial was updated on macOS 12.2.1.
     end
     ```
 
-25. add routes for our GraphQL API and GraphiQL browser endpoints:
+26. add routes for our GraphQL API and GraphiQL browser endpoints:
 
     `lib/zero_phoenix_web/router.ex`:
 
@@ -559,19 +586,19 @@ Note: This tutorial was updated on macOS 12.2.1.
     end
     ```
 
-26. start the server
+27. start the server
 
     ```zsh
     mix phx.server
     ```
 
-27. navigate to our application within the browser
+28. navigate to our application within the browser
 
     ```zsh
     open http://localhost:4000/graphiql
     ```
 
-28. enter the below GraphQL query on the left side of the browser window
+29. enter the below GraphQL query on the left side of the browser window
 
     ```graphql
     {
@@ -590,7 +617,7 @@ Note: This tutorial was updated on macOS 12.2.1.
     }
     ```
 
-29. run the GraphQL query
+30. run the GraphQL query
 
     ```text
     Control + Enter
