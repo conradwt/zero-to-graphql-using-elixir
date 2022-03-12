@@ -1,7 +1,7 @@
-defmodule ZeroPhoenixWeb.Graphql.Types.Person do
+defmodule ZeroPhoenixWeb.GraphQL.Types.Person do
   use Absinthe.Schema.Notation
 
-  alias ZeroPhoenixWeb.Graphql.Resolvers
+  alias ZeroPhoenixWeb.GraphQL.Resolvers
 
   @desc "a person"
   object :person do
