@@ -34,12 +34,12 @@ defmodule ZeroPhoenix.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6.6"},
+      {:phoenix, "~> 1.6.7"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.7.1"},
       {:postgrex, "~> 0.15.9"},
       {:phoenix_live_dashboard, "~> 0.6"},
-      {:swoosh, "~> 1.3"},
+      {:swoosh, "~> 1.6.4"},
       {:telemetry_metrics, "~> 0.6.0"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18.2"},
