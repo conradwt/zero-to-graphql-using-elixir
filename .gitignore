@@ -25,3 +25,13 @@ zero_phoenix-*.tar
 # Exclude VSCode artifacts
 .metals/
 .vscode/
+
+# Exclude Research Notes
+ACTIONS.md
+APOLLO.md
+Dockerfile.orig
+Dockerfile.sample
+PRODUCTION-DEPLOYMENT.md
+README-CURL-EXAMPLE.md
+docker-compose.debug.yml
+docker-compose.yml.sample
