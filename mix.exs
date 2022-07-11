@@ -10,7 +10,10 @@ defmodule ZeroPhoenix.Mixfile do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        "test.watch": :test
+      ]
     ]
   end
 
@@ -47,7 +50,9 @@ defmodule ZeroPhoenix.Mixfile do
       {:plug_cowboy, "~> 2.5.2"},
       {:absinthe, "~> 1.7.0"},
       {:absinthe_plug, "~> 1.5.8"},
-      {:cors_plug, "~> 3.0.3"}
+      {:cors_plug, "~> 3.0.3"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:mix_test_watch, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
 
