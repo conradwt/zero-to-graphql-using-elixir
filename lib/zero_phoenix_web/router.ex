@@ -10,15 +10,15 @@ defmodule ZeroPhoenixWeb.Router do
 
     if Mix.env() in [:dev, :test] do
       forward "/graphiql",
-        Absinthe.Plug.GraphiQL,
-        schema: ZeroPhoenixWeb.GraphQL.Schema,
-        json_codec: Jason,
-        interface: :playground
+              Absinthe.Plug.GraphiQL,
+              schema: ZeroPhoenixWeb.GraphQL.Schema,
+              json_codec: Jason,
+              interface: :playground
     end
 
     forward "/api",
-      Absinthe.Plug,
-      schema: ZeroPhoenixWeb.GraphQL.Schema
+            Absinthe.Plug,
+            schema: ZeroPhoenixWeb.GraphQL.Schema
   end
 
   # Enables LiveDashboard only for development
@@ -34,7 +34,10 @@ defmodule ZeroPhoenixWeb.Router do
     scope "/" do
       pipe_through [:fetch_session, :protect_from_forgery]
 
-      live_dashboard "/dashboard", metrics: ZeroPhoenixWeb.Telemetry
+      live_dashboard "/dashboard",
+        metrics: ZeroPhoenixWeb.Telemetry,
+        ecto_repos: [ZeroPhoenix.Repo],
+        ecto_psql_extras_options: [long_running_queries: [threshold: "200 milliseconds"]]
     end
   end
 
