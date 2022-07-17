@@ -8,9 +8,9 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Elixir 1.13.4 or newer
 
-- Erlang 25.0.2 or newer
+- Erlang 25.0.3 or newer
 
-- Phoenix 1.6.10 or newer
+- Phoenix 1.6.11 or newer
 
 - PostgreSQL 14.4 or newer
 
