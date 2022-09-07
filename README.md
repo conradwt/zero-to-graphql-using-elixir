@@ -24,6 +24,64 @@ Note: This tutorial was updated on macOS 12.5.1.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
+## Codespaces Installation
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=140485080)
+
+1.  install and compile dependencies
+
+    ```zsh
+    mix do deps.get, deps.compile
+    ```
+
+2.  create, migrate, and seed the database
+
+    ```zsh
+    mix ecto.setup
+    ```
+
+3.  start the server
+
+    ```zsh
+    mix phx.server
+    ```
+
+4.  navigate to our application within the browser
+
+    ```zsh
+    open http://localhost:4000/graphiql
+    ```
+    
+    Note:  One must update their `Editor preference` to use `Visual Studio Code` located [here](https://github.com/settings/codespaces).
+
+5.  enter the below GraphQL query on the left side of the browser window
+
+    ```graphql
+    {
+      person(id: 1) {
+        firstName
+        lastName
+        username
+        email
+        friends {
+          firstName
+          lastName
+          username
+          email
+        }
+      }
+    }
+    ```
+
+6.  run the GraphQL query
+
+    ```text
+    Control + Enter
+    ```
+
+    Note: The GraphQL query is responding with same response but different shape
+    within the GraphiQL browser because Elixir Maps perform no ordering on insertion.
+
 ## Quick Installation
 
 1.  clone this repository
