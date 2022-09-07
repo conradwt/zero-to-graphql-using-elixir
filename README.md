@@ -379,7 +379,7 @@ Note: This tutorial was updated on macOS 12.5.1.
     mix run priv/repo/seeds.exs
     ```
 
-17. add `absinthe_plug` and `ataloader` hex package dependencies as follows:
+17. add `absinthe_plug` and `cors_plug` hex package dependencies as follows:
 
     `mix.exs`:
 
