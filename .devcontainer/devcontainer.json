@@ -1,19 +1,17 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/elixir-phoenix-postgres
 {
-	"name": "Elixir, Phoenix, & PostgresSQL (Community)",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "elixir",
-	"workspaceFolder": "/workspace",
+  "name": "Elixir, Phoenix, & PostgresSQL (Community)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "elixir",
+  "workspaceFolder": "/workspace",
 
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"jakebecker.elixir-ls"
-			],
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": ["jakebecker.elixir-ls"],
       "settings": {
         // ElixirLS extension for Elixir support, with the following (optional) VS Code settings:
         "elixirLS.dialyzerEnabled": true,
@@ -26,16 +24,16 @@
         "files.insertFinalNewline": true,
         "files.trimTrailingWhitespace": true
       }
-		}
-	},
+    }
+  },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// This can be used to network with other containers or with the host.
-	"forwardPorts": [4000, 4001, 5432],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or with the host.
+  "forwardPorts": [4000, 4001, 5432],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "mix do deps.get, deps.compile, ecto.setup",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "mix do deps.get, deps.compile, ecto.setup",
 
-	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode"
 }
