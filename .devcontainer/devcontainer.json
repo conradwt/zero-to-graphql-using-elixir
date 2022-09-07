@@ -13,7 +13,19 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"jakebecker.elixir-ls"
-			]
+			],
+      "settings": {
+        // ElixirLS extension for Elixir support, with the following (optional) VS Code settings:
+        "elixirLS.dialyzerEnabled": true,
+        "elixirLS.enableTestLenses": true,
+        "elixirLS.fetchDeps": false,
+        "elixirLS.signatureAfterComplete": false,
+        "elixirLS.suggestSpecs": false,
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 1000,
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true
+      }
 		}
 	},
 
