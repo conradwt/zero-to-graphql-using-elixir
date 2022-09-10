@@ -7,7 +7,7 @@ defmodule ZeroPhoenix.Mixfile do
       version: "3.5.3",
       elixir: "~> 1.14.0",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: [] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -39,21 +39,21 @@ defmodule ZeroPhoenix.Mixfile do
     [
       {:phoenix, "~> 1.6.12"},
       {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.7.1"},
-      {:postgrex, "~> 0.15.9"},
+      {:ecto_sql, "~> 3.8.3"},
+      {:postgrex, "~> 0.16.4"},
       {:phoenix_live_dashboard, "~> 0.6.5"},
-      {:swoosh, "~> 1.6.6"},
+      {:swoosh, "~> 1.8.0"},
       {:telemetry_metrics, "~> 0.6.1"},
       {:telemetry_poller, "~> 1.0.0"},
-      {:gettext, "~> 0.19.1"},
+      {:gettext, "~> 0.20.0"},
       {:jason, "~> 1.3.0"},
       {:plug_cowboy, "~> 2.5.2"},
       {:absinthe, "~> 1.7.0"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:mix_test_watch, "~> 1.1", only: [:dev, :test], runtime: false},
-      {:ecto_psql_extras, "~> 0.6"}
+      {:credo, "~> 1.6.7", only: [:dev, :test], runtime: false},
+      {:mix_test_watch, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:ecto_psql_extras, "~> 0.7.4"}
     ]
   end
 
