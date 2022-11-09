@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Erlang 25.1.2 or newer
 
-- Phoenix 1.6.14 or newer
+- Phoenix 1.6.15 or newer
 
 - PostgreSQL 14.5 or newer
 
@@ -386,7 +386,7 @@ Note: This tutorial was updated on macOS 12.6.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.6.14"},
+        {:phoenix, "~> 1.6.15"},
         {:phoenix_ecto, "~> 4.4"},
         {:ecto_sql, "~> 3.8.3"},
         {:postgrex, "~> 0.16.5"},
