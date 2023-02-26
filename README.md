@@ -10,9 +10,9 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Erlang 25.2.2 or newer
 
-- Phoenix 1.6.15 or newer
+- Phoenix 1.6.16 or newer
 
-- PostgreSQL 14.6 or newer
+- PostgreSQL 14.7 or newer
 
 Note: This tutorial was updated on macOS 12.6.2.
 
@@ -397,7 +397,7 @@ Note: This tutorial was updated on macOS 12.6.2.
         {:gettext, "~> 0.20.0"},
         {:jason, "~> 1.3.0"},
         {:plug_cowboy, "~> 2.5.2"},
-        {:absinthe, "~> 1.7.0"},
+        {:absinthe, "~> 1.7.1"},
         {:absinthe_plug, "~> 1.5.8"},
         {:cors_plug, "~> 3.0.3"}
       ]
