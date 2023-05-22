@@ -23,7 +23,7 @@ defmodule ZeroPhoenix.Mixfile do
   def application do
     [
       mod: {ZeroPhoenix.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ecto_sql]
     ]
   end
 
@@ -38,9 +38,9 @@ defmodule ZeroPhoenix.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.6.16"},
-      {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.8.3"},
-      {:postgrex, "~> 0.16.5"},
+      {:phoenix_ecto, "~> 4.4.1"},
+      {:ecto_sql, "~> 3.10.1"},
+      {:postgrex, "~> 0.17.1"},
       {:phoenix_live_dashboard, "~> 0.6.5"},
       {:swoosh, "~> 1.8.0"},
       {:telemetry_metrics, "~> 0.6.1"},
@@ -51,9 +51,9 @@ defmodule ZeroPhoenix.Mixfile do
       {:absinthe, "~> 1.7.1"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
-      {:credo, "~> 1.6.7", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.1.0", only: [:dev, :test], runtime: false},
-      {:ecto_psql_extras, "~> 0.7.4"}
+      {:ecto_psql_extras, "~> 0.7.11"}
     ]
   end
 
