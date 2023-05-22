@@ -12,6 +12,7 @@ config :zero_phoenix,
 
 # Configures the endpoint
 config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
+  adapter: Bandit.PhoenixAdapter,
   url: [host: "localhost"],
   render_errors: [
     formats: [json: ZeroPhoenixWeb.ErrorJSON],
