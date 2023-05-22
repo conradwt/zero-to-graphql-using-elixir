@@ -8,8 +8,8 @@ import Config
 config :zero_phoenix, ZeroPhoenix.Repo,
   username: "postgres",
   password: "postgres",
-  database: "zero_phoenix_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
+  database: "zero_phoenix_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
@@ -17,14 +17,17 @@ config :zero_phoenix, ZeroPhoenix.Repo,
 # you can enable the server option below.
 config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "8ry+7zZ8q3QB18RmDZ5xP/oe8nprdfMp5ht1id/FocOspw/oi0EggAilESNuG5Y0",
+  secret_key_base: "m+g4FdxZGvSmDQVwuAhXH1HDwzcUvEaHhUMcMZx2Psin1mxbMv0yO5XfUEP1zSVc",
   server: false
 
 # In test we don't send emails.
 config :zero_phoenix, ZeroPhoenix.Mailer, adapter: Swoosh.Adapters.Test
 
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
+
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime

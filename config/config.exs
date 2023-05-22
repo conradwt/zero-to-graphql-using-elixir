@@ -13,9 +13,12 @@ config :zero_phoenix,
 # Configures the endpoint
 config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: ZeroPhoenixWeb.ErrorView, accepts: ~w(json), layout: false],
+  render_errors: [
+    formats: [json: ZeroPhoenixWeb.ErrorJSON],
+    layout: false
+  ],
   pubsub_server: ZeroPhoenix.PubSub,
-  live_view: [signing_salt: "o9i216Dv"]
+  live_view: [signing_salt: "C+FqzhZ3"]
 
 # Configures the mailer
 #
@@ -26,9 +29,6 @@ config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :zero_phoenix, ZeroPhoenix.Mailer, adapter: Swoosh.Adapters.Local
 
-# Swoosh API client is needed for adapters other than SMTP.
-config :swoosh, :api_client, false
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
@@ -37,7 +37,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# Configure mix_test_watch
+# Configures mix_test_watch
 if Mix.env() == :dev do
   config :mix_test_watch,
     clear: true,
