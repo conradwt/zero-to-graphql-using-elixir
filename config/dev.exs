@@ -4,8 +4,9 @@ import Config
 config :zero_phoenix, ZeroPhoenix.Repo,
   username: "postgres",
   password: "postgres",
-  database: "zero_phoenix_dev",
   hostname: "localhost",
+  database: "zero_phoenix_dev",
+  stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -22,7 +23,7 @@ config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "QaZRP5dUmYwCW5wZnPwlIsO+nJe0ZnXAmJmaDcBM4sQ0OAhk2K6phBprknZQr61P",
+  secret_key_base: "Gm9lP4AcqfUJVu/EuhTLJzrND7kgPaaj441ZtRFpVcNkIEIEh2vhiDdTswbpEkzS",
   watchers: []
 
 # ## SSL Support
@@ -33,7 +34,6 @@ config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
 #
 #     mix phx.gen.cert
 #
-# Note that this task requires Erlang/OTP 20 or later.
 # Run `mix help phx.gen.cert` for more information.
 #
 # The `http:` config above can be replaced with:
@@ -49,6 +49,9 @@ config :zero_phoenix, ZeroPhoenixWeb.Endpoint,
 # configured to run both http and https servers on
 # different ports.
 
+# Enable dev routes for dashboard and mailbox
+config :zero_phoenix, dev_routes: true
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
@@ -58,3 +61,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false

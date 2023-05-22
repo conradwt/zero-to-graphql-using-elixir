@@ -10,11 +10,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Erlang 26.0 or newer
 
-- Phoenix 1.6.16 or newer
+- Phoenix 1.7.2 or newer
 
-- PostgreSQL 15.1 or newer
+- PostgreSQL 15.3 or newer
 
-Note: This tutorial was updated on macOS 13.3.1.
+Note: This tutorial was updated on macOS 13.4.
 
 ## Communication
 
@@ -386,17 +386,18 @@ Note: This tutorial was updated on macOS 13.3.1.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.6.16"},
-        {:phoenix_ecto, "~> 4.4"},
-        {:ecto_sql, "~> 3.8.3"},
-        {:postgrex, "~> 0.16.5"},
-        {:phoenix_live_dashboard, "~> 0.6.5"},
-        {:swoosh, "~> 1.8.0"},
+        {:phoenix, "~> 1.7.2"},
+        {:phoenix_ecto, "~> 4.4.1"},
+        {:ecto_sql, "~> 3.10.1"},
+        {:postgrex, "~> 0.17.1"},
+        {:phoenix_live_dashboard, "~> 0.7.2"},
+        {:swoosh, "~> 1.10.3"},
+        {:finch, "~> 0.16.0"},
         {:telemetry_metrics, "~> 0.6.1"},
         {:telemetry_poller, "~> 1.0.0"},
-        {:gettext, "~> 0.20.0"},
-        {:jason, "~> 1.3.0"},
-        {:plug_cowboy, "~> 2.5.2"},
+        {:gettext, "~> 0.22.1"},
+        {:jason, "~> 1.4.0"},
+        {:plug_cowboy, "~> 2.6.1"}
         {:absinthe, "~> 1.7.1"},
         {:absinthe_plug, "~> 1.5.8"},
         {:cors_plug, "~> 3.0.3"}

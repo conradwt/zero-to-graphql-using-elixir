@@ -21,34 +21,19 @@ defmodule ZeroPhoenixWeb.Router do
             schema: ZeroPhoenixWeb.GraphQL.Schema
   end
 
-  # Enables LiveDashboard only for development
-  #
-  # If you want to use the LiveDashboard in production, you should put
-  # it behind authentication and allow only admins to access it.
-  # If your application does not have an admins-only section yet,
-  # you can use Plug.BasicAuth to set up some basic authentication
-  # as long as you are also using SSL (which you should anyway).
-  if Mix.env() in [:dev, :test] do
+  # Enable LiveDashboard and Swoosh mailbox preview in development
+  if Application.compile_env(:zero_phoenix, :dev_routes) do
+    # If you want to use the LiveDashboard in production, you should put
+    # it behind authentication and allow only admins to access it.
+    # If your application does not have an admins-only section yet,
+    # you can use Plug.BasicAuth to set up some basic authentication
+    # as long as you are also using SSL (which you should anyway).
     import Phoenix.LiveDashboard.Router
 
-    scope "/" do
-      pipe_through [:fetch_session, :protect_from_forgery]
-
-      live_dashboard "/dashboard",
-        metrics: ZeroPhoenixWeb.Telemetry,
-        ecto_repos: [ZeroPhoenix.Repo],
-        ecto_psql_extras_options: [long_running_queries: [threshold: "200 milliseconds"]]
-    end
-  end
-
-  # Enables the Swoosh mailbox preview in development.
-  #
-  # Note that preview only shows emails that were sent by the same
-  # node running the Phoenix server.
-  if Mix.env() == :dev do
     scope "/dev" do
       pipe_through [:fetch_session, :protect_from_forgery]
 
+      live_dashboard "/dashboard", metrics: ZeroPhoenixWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end

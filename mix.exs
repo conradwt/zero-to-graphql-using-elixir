@@ -7,7 +7,6 @@ defmodule ZeroPhoenix.Mixfile do
       version: "3.5.3",
       elixir: "~> 1.14.4",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -23,7 +22,7 @@ defmodule ZeroPhoenix.Mixfile do
   def application do
     [
       mod: {ZeroPhoenix.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ecto_sql]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -37,17 +36,18 @@ defmodule ZeroPhoenix.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6.16"},
+      {:phoenix, "~> 1.7.2"},
       {:phoenix_ecto, "~> 4.4.1"},
       {:ecto_sql, "~> 3.10.1"},
       {:postgrex, "~> 0.17.1"},
-      {:phoenix_live_dashboard, "~> 0.6.5"},
-      {:swoosh, "~> 1.8.0"},
+      {:phoenix_live_dashboard, "~> 0.7.2"},
+      {:swoosh, "~> 1.10.3"},
+      {:finch, "~> 0.16.0"},
       {:telemetry_metrics, "~> 0.6.1"},
       {:telemetry_poller, "~> 1.0.0"},
-      {:gettext, "~> 0.20.0"},
-      {:jason, "~> 1.3.0"},
-      {:plug_cowboy, "~> 2.5.2"},
+      {:gettext, "~> 0.22.1"},
+      {:jason, "~> 1.4.0"},
+      {:plug_cowboy, "~> 2.6.1"},
       {:absinthe, "~> 1.7.1"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},

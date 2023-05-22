@@ -1,5 +1,5 @@
 defmodule ZeroPhoenixWeb.ConnCase do
- @moduledoc """
+  @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
 
@@ -19,25 +19,20 @@ defmodule ZeroPhoenixWeb.ConnCase do
 
   using do
     quote do
+      # The default endpoint for testing
+      @endpoint ZeroPhoenixWeb.Endpoint
+
+      use ZeroPhoenixWeb, :verified_routes
+
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
       import ZeroPhoenixWeb.ConnCase
-
-      alias ZeroPhoenixWeb.Router.Helpers, as: Routes
-
-      # The default endpoint for testing
-      @endpoint ZeroPhoenixWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ZeroPhoenix.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ZeroPhoenix.Repo, {:shared, self()})
-    end
-
+    ZeroPhoenix.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end
