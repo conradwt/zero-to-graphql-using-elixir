@@ -397,6 +397,32 @@ Note: This tutorial was updated on macOS 13.4.
         {:telemetry_poller, "~> 1.0.0"},
         {:gettext, "~> 0.22.1"},
         {:jason, "~> 1.4.0"},
+        {:plug_cowboy, "~> 2.5"},
+        {:absinthe, "~> 1.7.1"},
+        {:absinthe_plug, "~> 1.5.8"},
+        {:cors_plug, "~> 3.0.3"}
+      ]
+    end
+    ```
+
+18. replace `plug_cowboy` with `bandit` hex package dependencies as follows:
+
+    `mix.exs`:
+
+    ```elixir
+     defp deps do
+      [
+        {:phoenix, "~> 1.7.2"},
+        {:phoenix_ecto, "~> 4.4.1"},
+        {:ecto_sql, "~> 3.10.1"},
+        {:postgrex, "~> 0.17.1"},
+        {:phoenix_live_dashboard, "~> 0.7.2"},
+        {:swoosh, "~> 1.10.3"},
+        {:finch, "~> 0.16.0"},
+        {:telemetry_metrics, "~> 0.6.1"},
+        {:telemetry_poller, "~> 1.0.0"},
+        {:gettext, "~> 0.22.1"},
+        {:jason, "~> 1.4.0"},
         {:bandit, "~> 1.0.0-pre.3"},
         {:absinthe, "~> 1.7.1"},
         {:absinthe_plug, "~> 1.5.8"},
@@ -405,13 +431,19 @@ Note: This tutorial was updated on macOS 13.4.
     end
     ```
 
-18. install and compile dependencies
+19. add the following after line 14 within `config/config.exs` file:
+
+    ```elixir
+    adapter: Bandit.PhoenixAdapter,
+    ```
+
+20. install and compile dependencies
 
     ```zsh
     mix do deps.get, deps.compile
     ```
 
-19. configure `CORSPlug` by adding the following content:
+21. configure `CORSPlug` by adding the following content:
 
     `lib/zero_phoenix_web/endpoint.ex`:
 
@@ -425,13 +457,13 @@ Note: This tutorial was updated on macOS 13.4.
     plug(ZeroPhoenixWeb.Router)
     ```
 
-20. create the GraphQL directory structure
+22. create the GraphQL directory structure
 
     ```zsh
     mkdir -p lib/zero_phoenix_web/graphql/{resolvers,schemas/{queries,mutations},types}
     ```
 
-21. add the GraphQL schema which represents our entry point into our GraphQL structure:
+23. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `lib/zero_phoenix_web/graphql/schema.ex`:
 
@@ -449,7 +481,7 @@ Note: This tutorial was updated on macOS 13.4.
     end
     ```
 
-22. add our Person type which will be performing queries against:
+24. add our Person type which will be performing queries against:
 
     `lib/zero_phoenix_web/graphql/types/person.ex`:
 
@@ -488,7 +520,7 @@ Note: This tutorial was updated on macOS 13.4.
     end
     ```
 
-23. add the `person_queries` object to contain all the queries for a person:
+25. add the `person_queries` object to contain all the queries for a person:
 
     `lib/zero_phoenix_web/graphql/schemas/queries/person.ex`:
 
@@ -506,7 +538,7 @@ Note: This tutorial was updated on macOS 13.4.
     end
     ```
 
-24. add the `PersonResolver` to fetch the individual fields of our person object:
+26. add the `PersonResolver` to fetch the individual fields of our person object:
 
     `lib/zero_phoenix_web/graphql/resolvers/person_resolver.ex`:
 
@@ -527,7 +559,7 @@ Note: This tutorial was updated on macOS 13.4.
     end
     ```
 
-25. add routes for our GraphQL API and GraphiQL browser endpoints:
+27. add routes for our GraphQL API and GraphiQL browser endpoints:
 
     `lib/zero_phoenix_web/router.ex`:
 
@@ -559,19 +591,19 @@ Note: This tutorial was updated on macOS 13.4.
     end
     ```
 
-26. start the server
+28. start the server
 
     ```zsh
     mix phx.server
     ```
 
-27. navigate to our application within the browser
+29. navigate to our application within the browser
 
     ```zsh
     open http://localhost:4000/graphiql
     ```
 
-28. enter the below GraphQL query on the left side of the browser window
+30. enter the below GraphQL query on the left side of the browser window
 
     ```graphql
     {
@@ -590,7 +622,7 @@ Note: This tutorial was updated on macOS 13.4.
     }
     ```
 
-29. run the GraphQL query
+31. run the GraphQL query
 
     ```text
     Control + Enter
