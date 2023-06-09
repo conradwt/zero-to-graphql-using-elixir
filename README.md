@@ -412,7 +412,7 @@ Note: This tutorial was updated on macOS 13.4.
     ```elixir
      defp deps do
       [
-        {:phoenix, "~> 1.7.2"},
+        {:phoenix, "~> 1.7.3"},
         {:phoenix_ecto, "~> 4.4.1"},
         {:ecto_sql, "~> 3.10.1"},
         {:postgrex, "~> 0.17.1"},
