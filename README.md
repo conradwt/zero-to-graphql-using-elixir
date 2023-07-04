@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.15.1 or newer
+- Elixir 1.15.2 or newer
 
 - Erlang 26.0.2 or newer
 
@@ -395,7 +395,7 @@ Note: This tutorial was updated on macOS 13.4.1.
         {:finch, "~> 0.16.0"},
         {:telemetry_metrics, "~> 0.6.1"},
         {:telemetry_poller, "~> 1.0.0"},
-        {:gettext, "~> 0.22.1"},
+        {:gettext, "~> 0.22.3"},
         {:jason, "~> 1.4.0"},
         {:plug_cowboy, "~> 2.5"},
         {:absinthe, "~> 1.7.1"},
@@ -421,7 +421,7 @@ Note: This tutorial was updated on macOS 13.4.1.
         {:finch, "~> 0.16.0"},
         {:telemetry_metrics, "~> 0.6.1"},
         {:telemetry_poller, "~> 1.0.0"},
-        {:gettext, "~> 0.22.1"},
+        {:gettext, "~> 0.22.3"},
         {:jason, "~> 1.4.0"},
         {:bandit, "~> 1.0.0-pre.10"},
         {:absinthe, "~> 1.7.1"},
