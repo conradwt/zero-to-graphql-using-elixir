@@ -20,6 +20,16 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 
 FROM ${BUILDER_IMAGE} as builder
 
+# labels from https://github.com/opencontainers/image-spec/blob/master/annotations.md
+LABEL org.opencontainers.image.authors=conradwt@gmail.com
+LABEL org.opencontainers.image.created=$CREATED_DATE
+LABEL org.opencontainers.image.revision=$SOURCE_COMMIT
+LABEL org.opencontainers.image.title="Zero to GraphQL Using Elixir"
+LABEL org.opencontainers.image.url=https://hub.docker.com/u/conradwt/zero-to-graphql-using-elixir
+LABEL org.opencontainers.image.source=https://github.com/conradwt/zero-to-graphql-using-elixir
+LABEL org.opencontainers.image.licenses=MIT
+LABEL com.conradtaylor.elixir_version=$ELIXIR_VERSION
+
 # install build dependencies
 RUN apt-get update -y && apt-get install -y build-essential git \
   && apt-get clean && rm -f /var/lib/apt/lists/*_*
