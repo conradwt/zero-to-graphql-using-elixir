@@ -47,7 +47,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:telemetry_poller, "~> 1.0.0"},
       {:gettext, "~> 0.22.3"},
       {:jason, "~> 1.4.1"},
-      {:bandit, "~> 1.0.0-pre.10"},
+      {:bandit, "~> 1.0.0-pre.13"},
       {:absinthe, "~> 1.7.1"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
