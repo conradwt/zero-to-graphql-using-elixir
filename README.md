@@ -12,7 +12,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Phoenix 1.7.7 or newer
 
-- PostgreSQL 15.3 or newer
+- PostgreSQL 15.4 or newer
 
 Note: This tutorial was updated on macOS 13.5.1.
 
