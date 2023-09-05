@@ -39,7 +39,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:phoenix, "~> 1.7.7"},
       {:phoenix_ecto, "~> 4.4.1"},
       {:ecto_sql, "~> 3.10.1"},
-      {:postgrex, "~> 0.17.2"},
+      {:postgrex, "~> 0.17.3"},
       {:phoenix_live_dashboard, "~> 0.7.2"},
       {:swoosh, "~> 1.11.4"},
       {:finch, "~> 0.16.0"},
@@ -47,12 +47,12 @@ defmodule ZeroPhoenix.Mixfile do
       {:telemetry_poller, "~> 1.0.0"},
       {:gettext, "~> 0.22.3"},
       {:jason, "~> 1.4.1"},
-      {:bandit, "~> 1.0.0-pre.13"},
+      {:bandit, "~> 1.0.0-pre.14"},
       {:absinthe, "~> 1.7.1"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
       {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
-      {:mix_test_watch, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:mix_test_watch, "~> 1.1.1", only: [:dev, :test], runtime: false},
       {:ecto_psql_extras, "~> 0.7.12"},
       {:prom_ex, "~> 1.8.0"}
     ]
