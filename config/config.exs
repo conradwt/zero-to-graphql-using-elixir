@@ -48,6 +48,31 @@ if Mix.env() == :dev do
     ]
 end
 
+# Configures prom_ex
+config :zero_phoenix, ZeroPhoenix.PromEx,
+  disabled: false,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: [
+    host: System.get_env("GRAFANA_HOST", "http://localhost:3000"),
+    username: System.get_env("GF_SECURITY_ADMIN_USER", "admin"),
+    password: System.get_env("GF_SECURITY_ADMIN_PASSWORD", "admin"),
+    folder_name: "zero-to-graphql-using-elixir",
+    upload_dashboards_on_start: true,
+    annotate_app_lifecycle: true
+  ],
+  metrics_server: [
+    protocol: :http,
+    path: "/metrics",
+    port: 4021,
+    pool_size: 5,
+    cowboy_opts: [],
+    auth_strategy: :none
+  ]
+
+# config :zero_phoenix, ZeroPhoenix.PromEx,
+#   grafana_datasource_id: System.get_env("GRAFANA_DATASOURCE_ID", "Local Prometheus")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

@@ -7,16 +7,18 @@ defmodule ZeroPhoenix.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      ZeroPhoenix.Repo,
+      # Start the PromEx
+      ZeroPhoenix.PromEx,
       # Start the Telemetry supervisor
       ZeroPhoenixWeb.Telemetry,
+      # Start the Ecto repository
+      ZeroPhoenix.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: ZeroPhoenix.PubSub},
-      # Start the endpoint when the application starts
+      # Start Finch
+      {Finch, name: ZeroPhoenix.Finch},
+      # Start the Endpoint (http/https)
       ZeroPhoenixWeb.Endpoint
-      # Start your own worker by calling: ZeroPhoenix.Worker.start_link(arg1, arg2, arg3)
-      # worker(ZeroPhoenix.Worker, [arg1, arg2, arg3]),
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
