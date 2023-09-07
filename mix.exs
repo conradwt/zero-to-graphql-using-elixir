@@ -53,8 +53,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:cors_plug, "~> 3.0.3"},
       {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.1.1", only: [:dev, :test], runtime: false},
-      {:ecto_psql_extras, "~> 0.7.12"},
-      {:prom_ex, "~> 1.8.0"}
+      {:ecto_psql_extras, "~> 0.7.12"}
     ]
   end
 
