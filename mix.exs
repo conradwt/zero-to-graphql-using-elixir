@@ -5,7 +5,7 @@ defmodule ZeroPhoenix.Mixfile do
     [
       app: :zero_phoenix,
       version: "3.5.3",
-      elixir: "~> 1.15.5",
+      elixir: "~> 1.15.6",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -47,7 +47,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:telemetry_poller, "~> 1.0.0"},
       {:gettext, "~> 0.22.3"},
       {:jason, "~> 1.4.1"},
-      {:bandit, "~> 1.0.0-pre.15"},
+      {:bandit, "~> 1.0.0-pre.16"},
       {:absinthe, "~> 1.7.1"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
