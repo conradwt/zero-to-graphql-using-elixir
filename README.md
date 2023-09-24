@@ -6,15 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.15.5 or newer
+- Elixir 1.15.6 or newer
 
-- Erlang 26.0.2 or newer
+- Erlang 26.1 or newer
 
 - Phoenix 1.7.7 or newer
 
 - PostgreSQL 15.4 or newer
 
-Note: This tutorial was updated on macOS 13.5.1.
+Note: This tutorial was updated on macOS 13.5.2.
 
 ## Communication
 
@@ -423,7 +423,7 @@ Note: This tutorial was updated on macOS 13.5.1.
         {:telemetry_poller, "~> 1.0.0"},
         {:gettext, "~> 0.22.3"},
         {:jason, "~> 1.4.1"},
-        {:bandit, "~> 1.0.0-pre.10"},
+        {:bandit, "~> 1.0.0-pre.16"},
         {:absinthe, "~> 1.7.1"},
         {:absinthe_plug, "~> 1.5.8"},
         {:cors_plug, "~> 3.0.3"}
@@ -660,4 +660,4 @@ Zero to GraphQL Using Elixir is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-copyright:: (c) Copyright 2018 - 2023 Conrad Taylor. All Rights Reserved.
+Copyright &copy; 2018 - 2023 Conrad Taylor. All rights reserved.
