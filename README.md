@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Erlang 26.1.1 or newer
 
-- Phoenix 1.7.8 or newer
+- Phoenix 1.7.9 or newer
 
 - PostgreSQL 15.4 or newer
 
@@ -386,7 +386,7 @@ Note: This tutorial was updated on macOS 14.0.0.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.7.7"},
+        {:phoenix, "~> 1.7.9"},
         {:phoenix_ecto, "~> 4.4.1"},
         {:ecto_sql, "~> 3.10.1"},
         {:postgrex, "~> 0.17.2"},
@@ -412,7 +412,7 @@ Note: This tutorial was updated on macOS 14.0.0.
     ```elixir
      defp deps do
       [
-        {:phoenix, "~> 1.7.7"},
+        {:phoenix, "~> 1.7.9"},
         {:phoenix_ecto, "~> 4.4.1"},
         {:ecto_sql, "~> 3.10.1"},
         {:postgrex, "~> 0.17.2"},
@@ -423,7 +423,7 @@ Note: This tutorial was updated on macOS 14.0.0.
         {:telemetry_poller, "~> 1.0.0"},
         {:gettext, "~> 0.22.3"},
         {:jason, "~> 1.4.1"},
-        {:bandit, "~> 1.0.0-pre.16"},
+        {:bandit, "~> 1.0.0-pre.18"},
         {:absinthe, "~> 1.7.1"},
         {:absinthe_plug, "~> 1.5.8"},
         {:cors_plug, "~> 3.0.3"}
