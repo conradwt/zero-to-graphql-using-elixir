@@ -37,7 +37,7 @@ defmodule ZeroPhoenix.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.7.9"},
-      {:phoenix_ecto, "~> 4.4.1"},
+      {:phoenix_ecto, "~> 4.4.3"},
       {:ecto_sql, "~> 3.10.1"},
       {:postgrex, "~> 0.17.3"},
       {:phoenix_live_dashboard, "~> 0.7.2"},
