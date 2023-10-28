@@ -5,7 +5,7 @@ defmodule ZeroPhoenix.Mixfile do
     [
       app: :zero_phoenix,
       version: "3.5.3",
-      elixir: "~> 1.15.6",
+      elixir: "~> 1.15.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
