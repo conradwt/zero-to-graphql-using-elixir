@@ -1,0 +1,77 @@
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+  external_labels:
+    monitor: 'zero_phoenix'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A example scrape configuration for running Prometheus with Docker.
+
+scrape_configs:
+  # Make Prometheus scrape itself for metrics.
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:9090']
+
+  # Create a job for Docker daemon.
+  #
+  # This example requires Docker daemon to be configured to expose
+  # Prometheus metrics, as documented here:
+  # https://docs.docker.com/config/daemon/prometheus/
+  # - job_name: 'docker'
+  #   static_configs:
+  #     # - targets: ['127.0.0.1:9323']
+  #     - targets: ['172.17.0.1:9323']
+
+  #
+  # Create a job for the Phoenix application.
+  #
+  # Reference:
+  #
+  # https://github.com/akoutmos/prom_ex/blob/master/example_applications/shared_docker/prometheus/config.yml#L15-L17
+  #
+  - job_name: 'zero_phoenix'
+    static_configs:
+      - targets: ['host.docker.internal:4000']
+
+  # Create a job for Docker Swarm containers.
+  #
+  # This example works with cadvisor running using:
+  # docker run --detach --name cadvisor -l prometheus-job=cadvisor
+  #     --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock,ro
+  #     --mount type=bind,src=/,dst=/rootfs,ro
+  #     --mount type=bind,src=/var/run,dst=/var/run
+  #     --mount type=bind,src=/sys,dst=/sys,ro
+  #     --mount type=bind,src=/var/lib/docker,dst=/var/lib/docker,ro
+  #     google/cadvisor -docker_only
+  # - job_name: 'docker-containers'
+  #   docker_sd_configs:
+  #     - host: unix:///var/run/docker.sock # You can also use http/https to connect to the Docker daemon.
+  #   relabel_configs:
+  #     # Only keep containers that have a `prometheus-job` label.
+  #     - source_labels: [__meta_docker_container_label_prometheus_job]
+  #       regex: .+
+  #       action: keep
+  #     # Use the task labels that are prefixed by `prometheus-`.
+  #     - regex: __meta_docker_container_label_prometheus_(.+)
+  #       action: labelmap
+  #       replacement: $1
+# remote_write:
+#   - url: '<Your Prometheus remote_write endpoint>'
+#     basic_auth:
+#       username: '<Your Grafana Username>'
+#       password: '<Your Grafana API key>'
