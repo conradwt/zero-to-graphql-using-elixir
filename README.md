@@ -14,7 +14,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 15.5 or newer
 
-Note: This tutorial was updated on macOS 14.2.
+Note: This tutorial was updated on macOS 14.2.1.
 
 ## Communication
 
