@@ -5,7 +5,7 @@ defmodule ZeroPhoenix.Mixfile do
     [
       app: :zero_phoenix,
       version: "3.5.3",
-      elixir: "~> 1.15.7",
+      elixir: "~> 1.16.0",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -36,10 +36,10 @@ defmodule ZeroPhoenix.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.9"},
+      {:phoenix, "~> 1.7.10"},
       {:phoenix_ecto, "~> 4.4.3"},
       {:ecto_sql, "~> 3.10.1"},
-      {:postgrex, "~> 0.17.3"},
+      {:postgrex, "~> 0.17.4"},
       {:phoenix_live_dashboard, "~> 0.7.2"},
       {:swoosh, "~> 1.11.6"},
       {:finch, "~> 0.16.0"},
@@ -48,10 +48,10 @@ defmodule ZeroPhoenix.Mixfile do
       {:gettext, "~> 0.22.3"},
       {:jason, "~> 1.4.1"},
       {:bandit, "~> 1.0.0"},
-      {:absinthe, "~> 1.7.1"},
+      {:absinthe, "~> 1.7.6"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
-      {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7.2", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.1.1", only: [:dev, :test], runtime: false},
       {:ecto_psql_extras, "~> 0.7.12"}
     ]
