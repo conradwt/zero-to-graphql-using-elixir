@@ -43,7 +43,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:phoenix_live_dashboard, "~> 0.7.2"},
       {:swoosh, "~> 1.11.6"},
       {:finch, "~> 0.16.0"},
-      {:telemetry_metrics, "~> 0.6.1"},
+      {:telemetry_metrics, "~> 0.6.2"},
       {:telemetry_poller, "~> 1.0.0"},
       {:gettext, "~> 0.22.3"},
       {:jason, "~> 1.4.1"},
@@ -51,9 +51,9 @@ defmodule ZeroPhoenix.Mixfile do
       {:absinthe, "~> 1.7.6"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
-      {:credo, "~> 1.7.2", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7.3", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.1.1", only: [:dev, :test], runtime: false},
-      {:ecto_psql_extras, "~> 0.7.12"}
+      {:ecto_psql_extras, "~> 0.7.15"}
     ]
   end
 

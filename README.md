@@ -386,22 +386,21 @@ Note: This tutorial was updated on macOS 14.2.1.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.7.9"},
-        {:phoenix_ecto, "~> 4.4.1"},
+        {:phoenix, "~> 1.7.10"},
+        {:phoenix_ecto, "~> 4.4.3"},
         {:ecto_sql, "~> 3.10.1"},
-        {:postgrex, "~> 0.17.2"},
+        {:postgrex, "~> 0.17.4"},
         {:phoenix_live_dashboard, "~> 0.7.2"},
-        {:swoosh, "~> 1.10.3"},
+        {:swoosh, "~> 1.11.6"},
         {:finch, "~> 0.16.0"},
-        {:telemetry_metrics, "~> 0.6.1"},
+        {:telemetry_metrics, "~> 0.6.2"},
         {:telemetry_poller, "~> 1.0.0"},
         {:gettext, "~> 0.22.3"},
         {:jason, "~> 1.4.1"},
-        {:plug_cowboy, "~> 2.5"},
-        {:absinthe, "~> 1.7.1"},
+        {:bandit, "~> 1.0.0"},
+        {:absinthe, "~> 1.7.6"},
         {:absinthe_plug, "~> 1.5.8"},
         {:cors_plug, "~> 3.0.3"}
-      ]
     end
     ```
 
@@ -660,4 +659,4 @@ Zero to GraphQL Using Elixir is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-Copyright &copy; 2018 - 2023 Conrad Taylor. All rights reserved.
+Copyright &copy; 2018 - 2024 Conrad Taylor. All rights reserved.
