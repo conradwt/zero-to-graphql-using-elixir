@@ -659,4 +659,4 @@ Zero to GraphQL Using Elixir is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-Copyright &copy; 2018 - 2023 Conrad Taylor. All rights reserved.
+Copyright &copy; 2018 - 2024 Conrad Taylor. All rights reserved.
