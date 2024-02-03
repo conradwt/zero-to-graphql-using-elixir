@@ -6,11 +6,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.16.0 or newer
+- Elixir 1.16.1 or newer
 
 - Erlang 26.2.1 or newer
 
-- Phoenix 1.7.10 or newer
+- Phoenix 1.7.11 or newer
 
 - PostgreSQL 15.5 or newer
 
