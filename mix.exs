@@ -39,7 +39,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:phoenix, "~> 1.7.11"},
       {:phoenix_ecto, "~> 4.4.3"},
       {:ecto_sql, "~> 3.10.1"},
-      {:postgrex, "~> 0.17.4"},
+      {:postgrex, "~> 0.17.5"},
       {:phoenix_live_dashboard, "~> 0.7.2"},
       {:swoosh, "~> 1.11.6"},
       {:finch, "~> 0.16.0"},
