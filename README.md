@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Elixir 1.16.2 or newer
 
-- Erlang 26.2.4 or newer
+- Erlang 26.2.5 or newer
 
 - Phoenix 1.7.11 or newer
 
