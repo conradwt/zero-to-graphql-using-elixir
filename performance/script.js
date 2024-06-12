@@ -152,3 +152,9 @@ export async function getPeople() {
     "status was 200": (r) => r.status === 200
   })
 }
+
+export async function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
