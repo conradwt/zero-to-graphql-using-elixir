@@ -6,15 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.16.2 or newer
+- Elixir 1.17.0 or newer
 
-- Erlang 26.2.5 or newer
+- Erlang 27.0 or newer
 
-- Phoenix 1.7.11 or newer
+- Phoenix 1.7.12 or newer
 
 - PostgreSQL 16.2 or newer
 
-Note: This tutorial was updated on macOS 14.4.1.
+Note: This tutorial was updated on macOS 14.5.
 
 ## Communication
 
@@ -386,7 +386,7 @@ Note: This tutorial was updated on macOS 14.4.1.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.7.11"},
+        {:phoenix, "~> 1.7.12"},
         {:phoenix_ecto, "~> 4.4.3"},
         {:ecto_sql, "~> 3.10.1"},
         {:postgrex, "~> 0.17.5"},
