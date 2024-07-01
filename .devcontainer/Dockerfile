@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Update the VARIANT arg in docker-compose.yml to pick an Elixir version: 1.9, 1.10, 1.10.4
-ARG VARIANT="1.17.0"
+ARG VARIANT="1.17.1"
 FROM elixir:${VARIANT}
 
 # This Dockerfile adds a non-root user with sudo access. Update the “remoteUser” property in
@@ -17,7 +17,7 @@ ARG COMMON_SCRIPT_SOURCE="https://raw.githubusercontent.com/microsoft/vscode-dev
 ARG COMMON_SCRIPT_SHA="dev-mode"
 
 # Optional Settings for Phoenix
-ARG PHOENIX_VERSION="1.7.12"
+ARG PHOENIX_VERSION="1.7.14"
 
 # [Optional] Setup nodejs
 # ARG NODE_SCRIPT_SOURCE="https://raw.githubusercontent.com/microsoft/vscode-dev-containers/main/script-library/node-debian.sh"
