@@ -48,7 +48,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:gettext, "~> 0.22.3"},
       {:jason, "~> 1.4.3"},
       {:bandit, "~> 1.3.0"},
-      {:absinthe, "~> 1.7.6"},
+      {:absinthe, "~> 1.7.7"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
       {:credo, "~> 1.7.7", only: [:dev, :test], runtime: false},
