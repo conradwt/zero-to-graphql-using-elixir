@@ -386,7 +386,7 @@ Note: This tutorial was updated on macOS 14.5.
     ```elixir
     defp deps do
       [
-        {:phoenix, "~> 1.7.12"},
+        {:phoenix, "~> 1.7.14"},
         {:phoenix_ecto, "~> 4.4.3"},
         {:ecto_sql, "~> 3.10.1"},
         {:postgrex, "~> 0.17.5"},
@@ -396,9 +396,9 @@ Note: This tutorial was updated on macOS 14.5.
         {:telemetry_metrics, "~> 0.6.2"},
         {:telemetry_poller, "~> 1.0.0"},
         {:gettext, "~> 0.22.3"},
-        {:jason, "~> 1.4.1"},
+        {:jason, "~> 1.4.3"},
         {:bandit, "~> 1.3.0"},
-        {:absinthe, "~> 1.7.6"},
+        {:absinthe, "~> 1.7.8"},
         {:absinthe_plug, "~> 1.5.8"},
         {:cors_plug, "~> 3.0.3"}
       ]
