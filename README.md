@@ -8,13 +8,13 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Elixir 1.17.3 or newer
 
-- Erlang 27.1 or newer
+- Erlang 27.1.2 or newer
 
 - Phoenix 1.7.14 or newer
 
 - PostgreSQL 16.4 or newer
 
-Note: This tutorial was updated on macOS 14.6.1.
+Note: This tutorial was updated on macOS 15.0.1.
 
 ## Communication
 
@@ -396,7 +396,7 @@ Note: This tutorial was updated on macOS 14.6.1.
         {:telemetry_metrics, "~> 0.6.2"},
         {:telemetry_poller, "~> 1.0.0"},
         {:gettext, "~> 0.22.3"},
-        {:jason, "~> 1.4.3"},
+        {:jason, "~> 1.4.4"},
         {:bandit, "~> 1.3.0"},
         {:absinthe, "~> 1.7.8"},
         {:absinthe_plug, "~> 1.5.8"},
