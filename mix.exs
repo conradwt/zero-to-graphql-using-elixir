@@ -51,7 +51,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:absinthe, "~> 1.7.8"},
       {:absinthe_plug, "~> 1.5.8"},
       {:cors_plug, "~> 3.0.3"},
-      {:credo, "~> 1.7.8", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7.9", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.1.2", only: [:dev, :test], runtime: false},
       {:ecto_psql_extras, "~> 0.7.15"}
     ]
