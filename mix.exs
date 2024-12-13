@@ -36,7 +36,7 @@ defmodule ZeroPhoenix.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.17"},
+      {:phoenix, "~> 1.7.18"},
       {:phoenix_ecto, "~> 4.4.3"},
       {:ecto_sql, "~> 3.10.1"},
       {:postgrex, "~> 0.17.5"},
