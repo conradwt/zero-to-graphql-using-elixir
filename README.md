@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.17.3 or newer
+- Elixir 1.18.0 or newer
 
 - Erlang 27.2 or newer
 
@@ -14,7 +14,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 17.2 or newer
 
-Note: This tutorial was updated on macOS 15.1.1.
+Note: This tutorial was updated on macOS 15.2.
 
 ## Communication
 
