@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Update the VARIANT arg in docker-compose.yml to pick an Elixir version: 1.9, 1.10, 1.10.4
-ARG VARIANT="1.18.1"
+ARG VARIANT="1.18.2"
 FROM elixir:${VARIANT}
 
 # This Dockerfile adds a non-root user with sudo access. Update the “remoteUser” property in
