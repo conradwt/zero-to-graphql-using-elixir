@@ -2,7 +2,7 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/elixir-phoenix-postgres
 {
   "name": "Elixir, Phoenix, & PostgresSQL (Community)",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "compose.yml",
   "service": "elixir",
   "workspaceFolder": "/workspace",
   // Configure tool-specific properties.
