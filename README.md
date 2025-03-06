@@ -8,13 +8,13 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Elixir 1.18.2 or newer
 
-- Erlang 27.2.1 or newer
+- Erlang 27.3 or newer
 
-- Phoenix 1.7.18 or newer
+- Phoenix 1.7.20 or newer
 
 - PostgreSQL 17.2 or newer
 
-Note: This tutorial was updated on macOS 15.2.
+Note: This tutorial was updated on macOS 15.3.1.
 
 ## Communication
 
