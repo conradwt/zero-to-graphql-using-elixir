@@ -49,7 +49,7 @@ defmodule ZeroPhoenix.Mixfile do
       {:jason, "~> 1.4.4"},
       {:bandit, "~> 1.3.0"},
       {:absinthe, "~> 1.7.9"},
-      {:absinthe_plug, "~> 1.5.8"},
+      {:absinthe_plug, "~> 1.5.9"},
       {:cors_plug, "~> 3.0.3"},
       {:credo, "~> 1.7.11", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.1.2", only: [:dev, :test], runtime: false},
