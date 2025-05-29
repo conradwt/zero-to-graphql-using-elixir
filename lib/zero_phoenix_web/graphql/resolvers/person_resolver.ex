@@ -16,7 +16,7 @@ defmodule ZeroPhoenixWeb.GraphQL.Resolvers.PersonResolver do
   end
 
   def list(_parent, %{ids: ids}, _resolution) do
-     {:ok, Accounts.get_people(ids)}
+    {:ok, Accounts.get_people(ids)}
   end
 
   def create(_parent, %{input: params}, _resolution) do
