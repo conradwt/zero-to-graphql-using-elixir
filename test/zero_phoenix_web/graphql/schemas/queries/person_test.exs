@@ -51,7 +51,7 @@ defmodule ZeroPhoenixWeb.GraphQL.Schemas.Queries.PersonTest do
       }
     """
 
-   people_ids =
+    people_ids =
       Person
       |> select([:id])
       |> order_by(asc: :id)

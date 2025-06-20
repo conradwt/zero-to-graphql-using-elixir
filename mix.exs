@@ -48,11 +48,10 @@ defmodule ZeroPhoenix.Mixfile do
       {:gettext, "~> 0.22.3"},
       {:jason, "~> 1.4.4"},
       {:bandit, "~> 1.3.0"},
-      {:absinthe, "~> 1.7.9"},
+      {:absinthe, "~> 1.7.10"},
       {:absinthe_plug, "~> 1.5.9"},
       {:cors_plug, "~> 3.0.3"},
       {:credo, "~> 1.7.11", only: [:dev, :test], runtime: false},
-      {:mix_test_watch, "~> 1.1.2", only: [:dev, :test], runtime: false},
       {:ecto_psql_extras, "~> 0.7.15"}
     ]
   end
