@@ -8,13 +8,13 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Elixir 1.18.4 or newer
 
-- Erlang 28.0.1 or newer
+- Erlang 28.0.2 or newer
 
 - Phoenix 1.7.21 or newer
 
 - PostgreSQL 17.5 or newer
 
-Note: This tutorial was updated on macOS 15.5.
+Note: This tutorial was updated on macOS 26 (Tahoe).
 
 ## Communication
 
@@ -628,4 +628,4 @@ Zero to GraphQL Using Elixir is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-Copyright &copy; 2018 - 2024 Conrad Taylor. All rights reserved.
+Copyright &copy; 2018 - 2025 Conrad Taylor. All rights reserved.
