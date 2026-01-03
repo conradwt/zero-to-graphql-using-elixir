@@ -6,9 +6,9 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.19.3 or newer
+- Elixir 1.19.4 or newer
 
-- Erlang 28.1.1 or newer
+- Erlang 28.3 or newer
 
 - Phoenix 1.7.21 or newer
 
@@ -628,4 +628,4 @@ Zero to GraphQL Using Elixir is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-Copyright &copy; 2018 - 2025 Conrad Taylor. All rights reserved.
+Copyright &copy; 2018 - 2026 Conrad Taylor. All rights reserved.
