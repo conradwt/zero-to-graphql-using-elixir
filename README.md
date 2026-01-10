@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.19.4 or newer
+- Elixir 1.19.5 or newer
 
 - Erlang 28.3 or newer
 
