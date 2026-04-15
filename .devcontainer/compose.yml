@@ -20,7 +20,7 @@ services:
     command: sleep infinity
 
   db:
-    image: postgres:18.2
+    image: postgres:18.3
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
