@@ -9,10 +9,7 @@ defmodule ZeroPhoenix.Mixfile do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps(),
-      preferred_cli_env: [
-        "test.watch": :test
-      ]
+      deps: deps()
     ]
   end
 
@@ -51,8 +48,8 @@ defmodule ZeroPhoenix.Mixfile do
       {:absinthe, "~> 1.7.10"},
       {:absinthe_plug, "~> 1.5.9"},
       {:cors_plug, "~> 3.0.3"},
-      {:credo, "~> 1.7.18", only: [:dev, :test], runtime: false},
-      {:ecto_psql_extras, "~> 0.7.15"}
+      {:ecto_psql_extras, "~> 0.7.15"},
+      {:credo, "~> 1.7.18", only: [:dev, :test], runtime: false}
     ]
   end
 
