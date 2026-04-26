@@ -47,7 +47,7 @@ jobs:
       # dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
       # dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # with:
+    # with:
       # NOTE: there are lots of input options for this reusable workflow
       # read the comments in the inputs area of the reusable workflow for more info
       # https://github.com/BretFisher/docker-build-workflow/blob/main/.github/workflows/reusable-docker-build.yaml
