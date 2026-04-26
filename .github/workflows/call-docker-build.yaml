@@ -47,10 +47,10 @@ jobs:
       # dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
       # dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # with:
+    with:
       # NOTE: there are lots of input options for this reusable workflow
       # read the comments in the inputs area of the reusable workflow for more info
-      # https://github.com/BretFisher/docker-build-workflow/blob/main/.github/workflows/reusable-docker-build.yaml
+      # https://github.com/conradwt/docker-build-workflow/blob/main/.github/workflows/reusable-docker-build.yaml
 
       # Here are just a few of the common defaults
 
@@ -73,6 +73,6 @@ jobs:
 
       # platforms are *native GitHub Runners by default, so only amd64 and/or arm64 are supported, and must be in JSON syntax.
       # for more platform build options, there's a "QEMU" reusable workflow option in this repo's .github/workflows folder
-      # platforms: '["linux/amd64", "linux/arm64"]'
+      platforms: '["linux/amd64", "linux/arm64"]'
 
       # comment-enable: true
