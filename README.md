@@ -6,15 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Elixir 1.20.1 or newer
+- Elixir 1.20.2 or newer
 
-- Erlang 29.0.2 or newer
+- Erlang 29.0.3 or newer
 
 - Phoenix 1.7.21 or newer
 
-- PostgreSQL 18.3 or newer
+- PostgreSQL 18.4 or newer
 
-Note: This tutorial was updated on macOS 26.5 (Tahoe).
+Note: This tutorial was updated on macOS 26.5.1 (Tahoe).
 
 ## Communication
 
