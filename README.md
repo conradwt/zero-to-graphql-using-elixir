@@ -1,3 +1,5 @@
+
+
 # Zero to GraphQL Using Elixir
 
 The purpose of this example is to provide details as to how one would go about using GraphQL with the Elixir Language. Thus, I have created two major sections which should be self explanatory: Quick Installation and Tutorial Installation.
@@ -240,7 +242,6 @@ Note: This tutorial was updated on macOS 26.5.1 (Tahoe).
 
     ```zsh
     mkdir -p dev/support
-    ```
 
 13. update the search for compiler within `mix.exs`:
 
@@ -263,7 +264,7 @@ Note: This tutorial was updated on macOS 26.5.1 (Tahoe).
 
     `dev/support/seeds.ex`:
 
-    ```zsh
+    ```elixir
     defmodule ZeroPhoenix.Seeds do
       alias ZeroPhoenix.Accounts.{Person, Friendship}
       alias ZeroPhoenix.Repo
